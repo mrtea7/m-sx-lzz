@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)http://19075.m.iwork365.com/fieldper/mine?code=c16a6587f2c4b192568f5e560103768f&state=1 -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>发布列表</title>
+    <meta charset="utf-8">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <link href="../../../assets/stylesheets/main.css" rel="stylesheet"/>
+    <link href="../../../assets/stylesheets/iDialog.css" rel="stylesheet"/>
+    <!--<script>-->
+    <!--var config = {-->
+    <!--HIDELOGO: 'false',-->
+    <!--URL: '/fieldper/mine?l=mine',-->
+    <!--DELURL: '/fieldper/delete'-->
+    <!--}-->
+    <!--</script>-->
+
+
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="container">
+    <header class="header">
+        <div class="fixed border_light b_top">
+            <div>
+                <nav class="nav">
+                    <a href="javascript:void(0)" class="cur"><span><em>列表</em></span></a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="list" fullheight="true" style="min-height: 472px;"> <!-- 如果没有列表的话此处加上class no_list -->
+        <ul id="list">
+            <li>
+                <a href="fbxq.html">
+                    <h3>
+                        铁丝护栏破损
+                        <b>未处理</b>
+                    </h3>
+
+                    <p class="darker">2014-12-12 9:23</p>
+
+                    <p class="darker">绍兴市XX区XX街XX号</p>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <listter class="menu bold">
+        <div class="fixed border_dark b_top" id="subBtns">
+            <a href="fblb.html" issignin="false"><span>加载更多..</span></a>
+        </div>
+    </listter>
+</div>
+
+
+</body>
+</html>
+<script src="../../../assets/javascripts/jquery.min.js"></script>
+<script src="../../../assets/javascripts/zepto.min.js"></script>
+<script src="../../../assets/javascripts/helper.js"></script>
+<script src="../../../assets/javascripts/fullHeight.js"></script>
+<script>
+    $.getJSON('../../../json/list.json', function (data) {
+        var json = data.data;
+        for (var i = 0, l = json.length; i < l; i++) {
+            var list = new Array();
+            list[i] = new Array();
+            var j = 0;
+            for (var key in json[i]) {
+                j++;
+                list[i][j] = json[i][key];
+//            alert(json[i][key]);
+            }
+            if (list[i][2] == "未处理") {
+                $("#list").append("<li>" + "<a>" +
+                        "<h3>" + list[i]['type'] +
+                        "<b>" + list[i][2] + "</b>"
+                        + "</h3>" +
+                        '<p class="darker">' + list[i][3] + "</P>" +
+                        '<p class="darker">' + list[i][4] + "</P>" + "</a>" +
+                        "</li>"
+                );
+            } else if (list[i][2] == "已处理") {
+                $("#list").append("<li>" + "<a>" +
+                        '<h3><p class="lighter">' + list[i][1] +
+                        "<samp>" + list[i][2] + "</samp>"
+                        + "</h3>" +
+                        '<p class="lighter">' + list[i][3] + "</P>" +
+                        '<p class="lighter">' + list[i][4] + "</P>" + "</a>" +
+                        "</li>"
+                );
+            } else {
+                $("#list").append("<li>" + "<a>" +
+                        '<h3><p class="lighter">' + list[i][1] +
+                        "<strong>" + list[i][2] + "</strong>"
+                        + "</h3>" +
+                        '<p class="lighter">' + list[i][3] + "</P>" +
+                        '<p class="lighter">' + list[i][4] + "</P>" + "</a>" +
+                        "</li>"
+                );
+            }
+
+        }
+    });
+</script>

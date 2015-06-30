@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)http://19075.m.iwork365.com/fieldper/signin?code=e36f241c94ccd6d60cd0cff55d5134cb&state=1 -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>处理详情</title>
+    <meta charset="utf-8">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+    <link href="../../../assets/stylesheets/main.css" rel="stylesheet"/>
+    <link href="../../../assets/stylesheets/iDialog.css" rel="stylesheet"/>
+    <link href="../../../assets/stylesheets/mobiscroll.css" rel="stylesheet"/>
+
+    <script>
+        var config = {
+            SUBURL: '/fieldper/create?code=09f2x6VgkDlenCiGoUSMiZYs&state=1',
+            JUMPURL: 'index.html'
+        }
+    </script>
+    <script>
+        var config = {
+                    status: -1, // 0 有计划，其他没有
+                    URL: '/fieldper/signin?code=e36f241c94ccd6d60cd0cff55d5134cb&state=1',
+                    JUMPURL: '',
+                    close: 0 // 0 关闭 1 调转
+                }
+                < script
+        src = "../../assets/javascripts/zepto.min.js" ></script>
+    <script src="../../../assets/javascripts/zepto.min.js"></script>
+    <script src="../../../assets/javascripts/helper.js"></script>
+    <script src="../../../assets/javascripts/fullHeight.js"></script>
+    <script src="../../../assets/javascripts/swipe.js"></script>
+    <script src="../../../assets/javascripts/mobiscroll.min.js"></script>
+    <script src="../../../assets/javascripts/droplist.js"></script>
+    <script src="../../../assets/javascripts/apply.js"></script>
+    <script src="../../../assets/javascripts/signin-nd.js"></script>
+    <script src="../../../assets/javascripts/map.js"></script>
+    <script src="../../../assets/javascripts/self.js"></script>
+    <script>
+        document.onreadystatechange = function () {
+            if(document.readyState=="complete") {
+                var add = document.getElementById("address").value;
+                var search = document.getElementById("searchId").value;
+//                alert(add);
+//                alert(search);
+//                search = add;
+//                alert(search)
+            }
+        }
+    </script>
+
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="container apply_wrap">
+    <header class="header">
+        <div class="fixed border_light b_top">
+            <div>
+                <nav class="nav">
+                    <a href="xxxq.html" class="cur"><span><em>信息详情</em></span></a>
+                    <a href="jl.html" class=""><span><em>处理记录</em></span></a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section data-role="body" class="section_scroll_content">
+        <form id="myForm" class="sign_wrap" fullheight="true" style="min-height: 540px;">
+            <ul class="apply_list">
+                <li>
+                    <div>发送人</div>
+                    <div><input type="text" name="userName" value="执行路长" readonly="" class=""></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div>时间</div>
+                    <div><input type="text" value="2015-1-13 9:22" readonly=""></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div>消息标题</div>
+                    <div>
+                        <input type="text" value="铁丝护栏破损" readonly="">
+
+                    </div>
+                    <div></div>
+                </li>
+                <li>
+                    <div>发布对象</div>
+                    <div>
+                        <input type="text" value="公路站" readonly="">
+                    </div>
+                    <div></div>
+                </li>
+            </ul>
+            <ul class="apply_list">
+                <li>
+                    <div><i class="ico_address"></i>地点</div>
+                    <div><input type="text" name="address" id="address" value="测试路314km路南" readonly=""></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div>选择照片</div>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li>
+                    <ul class="upload_img" id="uploadImg">
+                        <li>
+                            <span class="" style="background-image: url(../../../assets/pic/Chrysanthemum.jpg);"></span>
+                        </li>
+                        <li>
+                            <span class="" style="background-image: url(../../../assets/pic/Desert.jpg);"></span>
+                        </li>
+                        <li>
+                            <span class="" style="background-image: url(../../../assets/pic/Hydrangeas.jpg);"></span>
+                        </li>
+                    </ul>
+                </li>
+                <li><textarea name="message"  maxlength="125" readonly="">左侧K22处人行道石板翘起不平</textarea></li>
+            </ul>
+        </form>
+    </section>
+    <footer class="menu bold">
+        <div class="fixed border_dark b_top" id="subBtns">
+            <a href="fblb.html" issignin="false"><span>返回浏览列表</span></a>
+        </div>
+    </footer>
+</div>
+<div class="swipe">
+    <div class="imgBox">
+        <ul></ul>
+        <div class="swipe_num"></div>
+        <a href="javascript:void(0);" class="cancle_box">×</a><a href="javascript:void(0);" class="delete_img"></a>
+    </div>
+</div>
+
+
+<div class="map_warp" id="mapWrap" style="height: 677px;">
+    <div class="search_wrap">
+        <div class="search_box">
+            <input id="searchId" class="comm_txt" type="text">
+            <button id="positioning" class=""></button>
+        </div>
+    </div>
+    <div class="map_wrap" id="l-map"></div>
+    <div class="addres_wrap">
+        <button class="clear_btn fr" id="clearBtn"></button>
+        <strong>地址：</strong>
+        <span id="suggestId"></span>
+    </div>
+</div>
+</body>
+</html>

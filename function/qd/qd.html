@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)http://19075.m.iwork365.com/fieldper/signin?code=e36f241c94ccd6d60cd0cff55d5134cb&state=1 -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>签到</title>
+    <meta charset="utf-8">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+
+    <link href="../../assets/stylesheets/main.css" rel="stylesheet"/>
+    <link href="../../assets/stylesheets/iDialog.css" rel="stylesheet"/>
+
+
+    <script src="../../assets/javascripts/zepto.min.js"></script>
+    <script src="../../assets/javascripts/helper.js"></script>
+    <script src="../../assets/javascripts/fullHeight.js"></script>
+    <script src="../../assets/javascripts/mobiscroll.min.js"></script>
+    <script src="../../assets/javascripts/droplist.js"></script>
+    <script src="../../assets/javascripts/apply.js"></script>
+    <script src="../../assets/javascripts/signin.js"></script>
+    <script src="../../assets/javascripts/map-qd.js"></script>
+    <script src="../../assets/javascripts/self.js"></script>
+    <script>
+        var config = {
+            SUBURL: '/fieldper/create?code=09f2x6VgkDlenCiGoUSMiZYs&state=1',
+            JUMPURL: 'index.html'
+        }
+    </script>
+
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="container apply_wrap">
+    <header class="header">
+        <div class="fixed border_light b_top">
+            <div>
+                <nav class="nav">
+                    <a href="qd.html" class="cur"><span><em>签到</em></span></a>
+                    <a href="jl.html" class=""><span><em>签到统计</em></span></a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <form id="myForm" class="sign_wrap" fullheight="true" style="min-height: 540px;">
+        <ul class="apply_list">
+            <li>
+                <div><i class="ico_address"></i>地点</div>
+                <div><input type="text" name="address" id="address" readonly=""></div>
+                <div></div>
+            </li>
+            <li>
+                <div><i class="ico_time"></i>时间</div>
+                <div><input type="text" id="datetime" name="datetime" value="" readonly=""></div>
+                <div></div>
+            </li>
+        </ul>
+        <ul class="apply_list">
+            <li>
+                <div>选择照片</div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <ul class="upload_img" id="uploadImg">
+                    <li>
+                        <input type="file" accept="image/*" name="files[]">
+                        <span class="file_btn"></span>
+                        <a href="javascript:void(0);" class="del_img"></a>
+                    </li>
+                </ul>
+            </li>
+            <li><textarea name="message" placeholder="请输入备注" maxlength="125"></textarea></li>
+        </ul>
+    </form>
+    <footer class="menu bold">
+        <div class="fixed border_dark b_top" id="subBtns">
+            <a href="jl.html" issignin="false"><span>签到</span></a>
+        </div>
+    </footer>
+</div>
+<div class="map_warp" id="mapWrap">
+    <div class="search_wrap">
+        <div class="search_box">
+            <input id="searchId" class="comm_txt" type="text" placeholder="搜搜地点">
+            <button id="positioning" class=""></button>
+        </div>
+    </div>
+    <div class="map_wrap" id="l-map"></div>
+    <div class="addres_wrap">
+        <button class="comm_btn1 fr" id="selectBtn">确定</button>
+        <button class="clear_btn fr" id="clearBtn"></button>
+        <strong>地址：</strong>
+        <span id="suggestId"></span>
+    </div>
+</div>
+</body>
+</html>

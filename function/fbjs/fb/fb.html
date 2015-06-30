@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+
+    <title>信息发布</title>
+    <meta charset="utf-8">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no"
+          name="viewport">
+
+    <link href="../../../assets/stylesheets/main.css" rel="stylesheet"/>
+    <link href="../../../assets/stylesheets/iDialog.css" rel="stylesheet"/>
+    <link href="../../../assets/stylesheets/mobiscroll.css" rel="stylesheet"/>
+
+</head>
+<body onselectstart="return true;" ondragstart="return false;" style="overflow: hidden;">
+
+
+<input type="text" id="url" value="http://weixin.zssglglj.com:8088/function/fbjs/fb/fb.html" style="display: none"/>
+
+<div class="container apply_wrap">
+    <!--<header class="header">-->
+    <!--<div class="fixed border_light b_top">-->
+    <!--<div>-->
+    <!--<nav class="nav">-->
+    <!--<a href="javascript:void(0)" class="cur"><span><em>发布</em></span></a>-->
+    <!--</nav>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</header>-->
+    <section data-role="body" class="section_scroll_content">
+        <form id="myForm" style="min-height: 540px;">
+            <ul class="apply_list">
+                <li>
+                    <div>发送人</div>
+                    <div><input id="sendUser" type="text" name="userName" value="" readonly=""></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div>时间</div>
+                    <div><input class="required" name="datetime" id="datetime" type="text" data-role="datetime" value=""
+                                readonly=""></div>
+                    <div><i class="ico_arrow"></i></div>
+                </li>
+                <li>
+                    <div>消息标题</div>
+                    <div>
+                        <input class="required" type="text" data-role="select" name="outTypeName" placeholder="请选择类型"
+                               value="" data-droplist="[object Object]">
+                        <select name="outType" class="">
+                            <option value="" class="selectTt">请选择</option>
+                            <option value="1">人行道石板破损</option>
+                            <option value="2">警示桩破损</option>
+                            <option value="3">路面污渍和垃圾抛洒</option>
+                            <option value="4">绿化带及侧石破损</option>
+                            <option value="5">铁丝护栏破损</option>
+                            <option value="6">抄送件</option>
+                        </select>
+                    </div>
+
+                    <div><i class="ico_arrow"></i></div>
+                </li>
+                <li>
+                    <div>发布对象</div>
+                    <div>
+                        <input class="required" type="text" data-role="select" name="outTypeName" placeholder="请选择类型"
+                               value="">
+                        <select name="outType" class="">
+                            <option value="" class="selectTt">请选择</option>
+                            <option value="1">111111111</option>
+                            <option value="2">222222222</option>
+                            <option value="3">333333333</option>
+                            <option value="4">44444444</option>
+                            <option value="5">5555555555</option>
+                            <option value="6">6666666666666</option>
+                        </select>
+                    </div>
+
+                    <div><i class="ico_arrow"></i></div>
+                </li>
+            </ul>
+            <ul class="apply_list">
+                <li>
+                    <div><i class="ico_address"></i>地点</div>
+                    <div><input type="text" name="address" id="address" readonly=""></div>
+                    <div></div>
+                </li>
+                <li>
+                    <div>选择照片</div>
+                    <div></div>
+                    <div></div>
+                </li>
+                <li>
+                    <ul class="upload_img" id="uploadImg">
+
+                        <li>
+                            <span class="file_btn" id="wxuploadImg"></span>
+                            <a href="javascript:void(0);" class="del_img"></a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li><textarea name="message" placeholder="请输入备注" maxlength="125"></textarea></li>
+                <li id="wxrecordPic" style="display: none">
+                    <img id="pic" src="/assets/imgs/record.png" style="height: 30px;">
+                    <span id="time"></span>
+                    <img id="trash" src="/assets/imgs/trash-3.png" style="height: 30px;float: right;padding-top: 10px">
+                </li>
+                <li>
+                    <input type="button" class="comm_btn wxrecord" id="wxrecordText" value="按住说话"/>
+                </li>
+            </ul>
+        </form>
+    </section>
+    <footer class="menu bold">
+        <div class="fixed border_dark b_top" id="subBtns">
+            <a href="javascript:void(0)" issignin="false"><span>发布</span></a>
+        </div>
+    </footer>
+</div>
+<!--<div class="swipe">-->
+<!--<div class="imgBox">-->
+<!--<ul></ul>-->
+<!--<div class="swipe_num"></div>-->
+<!--<a href="javascript:void(0);" class="cancle_box">×</a><a href="javascript:void(0);" class="delete_img"></a>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div class="map_warp" id="mapWrap">
+    <div class="search_wrap">
+        <div class="search_box">
+            <input id="searchId" class="comm_txt" type="text" placeholder="搜搜地点">
+            <button id="positioning" class=""></button>
+        </div>
+    </div>
+    <div class="map_wrap" id="l-map"></div>
+    <div class="addres_wrap">
+        <button class="comm_btn1 fr" id="selectBtn">确定</button>
+        <button class="clear_btn fr" id="clearBtn"></button>
+        <strong>地址：</strong>
+        <span id="suggestId"></span>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../../assets/javascripts/jquery.min.js"></script>
+<script src="../../../assets/javascripts/zepto.min.js"></script>
+<script src="../../../assets/javascripts/helper.js"></script>
+<script src="../../../assets/javascripts/fullHeight.js"></script>
+<script src="../../../assets/javascripts/mobiscroll.min.js"></script>
+<script src="../../../assets/javascripts/swipe.js"></script>
+<script src="../../../assets/javascripts/droplist.js"></script>
+<script src="../../../assets/javascripts/signin-nd.js"></script>
+<script src="../../../assets/javascripts/apply.js"></script>
+<script src="../../../assets/javascripts/self.js"></script>
+<script src="../../../assets/javascripts/map.js"></script>
+<script src="../../../assets/javascripts/jweixin-1.0.0.js"></script>
+<script src="../../../assets/javascripts/wxconfig.js"></script>
+<script src="../../../assets/javascripts/wxrecord.js"></script>
+<script src="../../../assets/javascripts/wximage.js"></script>
+
+<script>
+    var config = {
+        SUBURL: '/fieldper/create?code=09f2x6VgkDlenCiGoUSMiZYs&state=1',
+        JUMPURL: 'index.html'
+    }
+</script>
+<script>
+    $(document).ready(function () {
+
+        evt.preventDefault();
+
+    });
+    $.getJSON('../../../json/fb.json', function (data) {
+        var sendUser = data.data.sendUser;
+        $("#sendUser").attr('value', sendUser)
+    });
+</script>

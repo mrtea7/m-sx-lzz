@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>单线任务统计</title>
+
+    <link href="../../assets/stylesheets/main.css" rel="stylesheet"/>
+    <link href="../../assets/stylesheets/iDialog.css" rel="stylesheet"/>
+    <link href="../../assets/stylesheets/font-awesome.css" rel="stylesheet"/>
+
+    <script src="../../assets/javascripts/jquery/jquery.js"></script>
+    <script src="../../assets/javascripts/plugins/highcharts/highcharts.js"></script>
+    <script src="../../assets/javascripts/plugins/highcharts/highcharts-3d.js"></script>
+    <script src="../../assets/javascripts/plugins/highcharts/examples/bar.js"></script>
+    <script src="../../assets/javascripts/plugins/highcharts/examples/pie.js"></script>
+
+</head>
+<body>
+<div class="container apply_wrap">
+    <header class="header">
+        <div class="fixed border_light b_top">
+            <div>
+                <nav class="nav">
+                    <a href="" class=""><span><em>本周</em></span></a>
+                    <a href="" class=""><span><em>本月</em></span></a>
+                    <a href="" class=""><span><em>本季度</em></span></a>
+                    <a href="" class=""><span><em>制定月份</em></span></a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <form id="myForm" fullheight="true" style="min-height: 589px;">
+        <ul class="apply_list">
+            <li>
+                <div>时间</div>
+                <div><input class="required"  name="datetime" id="datetime"  type="text" value="2015-1-15" readonly=""></div>
+                <div></div>
+            </li>
+            <li>
+                <div>任务总数：10</div>
+                <div><input type="text" value="G104东泾线" readonly=""></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div id="containerB"></div>
+                <div></div>
+            </li>
+        </ul>
+        <ul class="apply_list">
+            <li>
+                <div></div>
+                <div id="containerP"></div>
+                <div></div>
+            </li>
+        </ul>
+    </form>
+</div>
+
+</body>
+</html>

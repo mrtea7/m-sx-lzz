@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>电子巡查日志</title>
+
+    <link href="../../assets/stylesheets/main.css" rel="stylesheet"/>
+    <link href="../../assets/stylesheets/iDialog.css" rel="stylesheet"/>
+    <link href="../../assets/stylesheets/font-awesome.css" rel="stylesheet"/>
+
+    <script src="../../assets/javascripts/zepto.min.js"></script>
+    <script src="../../assets/javascripts/helper.js"></script>
+    <script src="../../assets/javascripts/fullHeight.js"></script>
+    <script src="../../assets/javascripts/mobiscroll.min.js"></script>
+    <script src="../../assets/javascripts/droplist.js"></script>
+    <script src="../../assets/javascripts/apply.js"></script>
+    <script src="../../assets/javascripts/self.js"></script>
+
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="container apply_wrap">
+    <form id="myForm" fullheight="true" style="min-height: 589px;">
+        <ul class="apply_list">
+            <li>
+                <div>时间</div>
+                <div><input id="datetime" type="text"   value="" readonly=""></div>
+                <div><i class="ico_arrow"></i></div>
+            </li>
+            <li>
+                <div>天气</div>
+                <div>
+                    <input class="required" type="text" data-role="select" name="outTypeName" placeholder="请选择天气" value="" data-droplist="[object Object]">
+                    <select name="outType" class="">
+                        <option value="" class="selectTt">请选择</option>
+                        <option value="1">阴天</option>
+                        <option value="2">晴天</option>
+                        <option value="3">雨天</option>
+                        <option value="4">雪天</option>
+                        <option value="5">雾霾</option>
+                    </select>
+                </div>
+                <div><i class="ico_arrow"></i></div>
+            </li>
+            <li>
+                <div>人员</div>
+                <div><input type="text" value="G104东泾线" readonly=""></div>
+                <div></div>
+            </li>
+        </ul>
+        <ul class="apply_list">
+            <li>
+                <div>今日巡路情况记录</div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div>1.完成数字城管案件</div>
+                <div>
+                    <i class="fa fa-minus" onclick="minus(this)"></i>
+                    &nbsp;&nbsp;&nbsp;<span id="count1">1</span>&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-plus" onclick="add(this)"></i>
+                </div>
+                <div></div>
+            </li>
+            <li>
+                <div>2.完成路面垃圾清理</div>
+                <div>
+                    <i class="fa fa-minus" onclick="minus(this)"></i>
+                    &nbsp;&nbsp;&nbsp;<span id="count2">1</span>&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-plus" onclick="add(this)"></i>
+                </div>
+                <div></div>
+            </li>
+            <li>
+                <div>3.完成绿化护栏整修</div>
+                <div>
+                    <i class="fa fa-minus" onclick="minus(this)"></i>
+                    &nbsp;&nbsp;&nbsp;<span id="count3">1</span>&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-plus" onclick="add(this)"></i>
+                </div>
+                <div></div>
+            </li>
+            <li>
+                <div>4.完成路面不平修整</div>
+                <div>
+                    <i class="fa fa-minus" onclick="minus(this)"></i>
+                    &nbsp;&nbsp;&nbsp;<span id="count4">1</span>&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-plus" onclick="add(this)"></i>
+                </div>
+                <div></div>
+            </li>
+            <li>
+                <div>5.完成其他任务</div>
+                <div>
+                    <i class="fa fa-minus" onclick="minus(this)"></i>
+                    &nbsp;&nbsp;&nbsp;<span id="count5">1</span>&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-plus" onclick="add(this)"></i>
+                </div>
+                <div></div>
+            </li>
+            <li>
+                <textarea class="required" maxlength="125" placeholder="请输入完成的其他任务" name="purpose"></textarea>
+            </li>
+        </ul>
+        <ul class="apply_list">
+            <li>
+                <div>任务完成效率</div>
+                <div>
+                    <i class="fa fa-minus" onclick="minus5(this)"></i>
+                    &nbsp;&nbsp;&nbsp;<span id="count6">60</span>%&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-plus" onclick="add5(this)"></i>
+                </div>
+                <div></div>
+            </li>
+        </ul>
+    </form>
+    <footer class="menu bold">
+        <div class="fixed border_dark b_top" id="subBtns">
+            <a href="javascript:void(0);" issignin="false" onclick="alert('提交成功')"><span>提交</span></a>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

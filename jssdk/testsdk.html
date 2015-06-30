@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<ul id="list"></ul>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $.getJSON('../json/sign.json', function (data) {
+
+        var json = data.data;
+        for (var i = 0, l = json.length; i < l; i++) {
+            var foo = new Array();
+            foo[i] = new Array();
+            var j = 0;
+            for (var key in json[i]) {
+                j++;
+                foo[i][j] = json[i][key];
+//            alert(json[i][key]);
+            }
+            $("#list").append("<li>" +
+            "<h3>" + foo[i][1] +
+            "<b>" + foo[i][2] + "</b>"
+            + "</h3>" +
+            '<p class="darker">' + foo[i][3] + "</P>" +
+            '<p class="darker">' + foo[i][4] + "</P>" +
+            "</li>");
+        }
+    });
+</script>
+
+</html>

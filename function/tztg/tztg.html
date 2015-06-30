@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>通知通告</title>
+    <meta charset="utf-8">
+
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+    <link href="../../assets/stylesheets/main.css" rel="stylesheet"/>
+    <link href="../../assets/stylesheets/mobiscroll.css" rel="stylesheet"/>
+    <script>
+        var config = {
+            SUBURL: '/fieldper/create?code=09f2x6VgkDlenCiGoUSMiZYs&state=1',
+            JUMPURL: 'index.html'
+        }
+    </script>
+    <script src="../../assets/javascripts/zepto.min.js"></script>
+    <script src="../../assets/javascripts/helper.js"></script>
+    <!--<script src="../../assets/javascripts/fullHeight.js"></script>-->
+    <script src="../../assets/javascripts/mobiscroll.min.js"></script>
+    <script src="../../assets/javascripts/droplist.js"></script>
+    <script src="../../assets/javascripts/map.js"></script>
+    <script src="../../assets/javascripts/apply.js"></script>
+    <!--<script src="../../assets/javascripts/self.js"></script>-->
+
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="container apply_wrap">
+    <form id="myForm" fullheight="true" style="min-height: 589px;">
+        <ul class="apply_list">
+            <li>
+                <div>通知标题</div>
+                <div><input class="required" type="text" name="userName" placeholder="请输入发布的主题" class=""></div>
+                <div></div>
+            </li>
+            <li>
+                <div>开始时间</div>
+                <div><input class="required" name="startTime" id="startTime" type="text" data-role="datetime" placeholder="请选择开始时间" value="" readonly=""></div>
+                <div><i class="ico_arrow"></i></div>
+            </li>
+            <li>
+                <div>结束时间</div>
+                <div><input class="required" name="endTime" id="endTime" type="text" data-role="datetime" placeholder="请选择结束时间" value="" readonly=""></div>
+                <div><i class="ico_arrow"></i></div>
+            </li>
+            <li>
+                <div>会议地点</div>
+                <div>
+                    <input type="hidden" name="lat" id="lat" value="" class="">
+                    <input type="hidden" name="lng" id="lng" value="" class="">
+                    <input id="address" name="address" type="text" readonly="" placeholder="请设置外出地点" value="" class="">
+                </div>
+                <div><i class="ico_arrow"></i></div>
+            </li>
+            <li>
+                <div>通知对象</div>
+                <div>
+                    <input class="required" type="text" data-role="select" name="outTypeName" placeholder="请选择通知对象" value="" data-droplist="[object Object]">
+                    <select name="outType" class="" multiple="multiple">
+                        <option value="" class="selectTt">请选择通知对象</option>
+                        <option value="1">监察路长、责任路长单位</option>
+                        <option value="2">执行路长单位</option>
+                        <option value="3">公路站</option>
+                        <option value="4">绿化站</option>
+                        <option value="5">保洁站</option>
+                        <option value="6">桥梁站</option>
+                        <option value="7">路政队</option>
+                        <option value="8">信息员</option>
+                        <option value="9">路长办</option>
+                    </select>
+                </div>
+                <div><i class="ico_arrow"></i></div>
+            </li>
+        </ul>
+        <ul class="apply_list">
+            <li>
+                <div>内容</div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <textarea class="required" maxlength="125" placeholder="请输入通知内容" name="purpose"></textarea>
+            </li>
+        </ul>
+    </form>
+    <footer class="menu bold">
+        <div class="fixed border_dark b_top" id="subBtns">
+            <a href="javascript:void(0);" issignin="false"><span>提交</span></a>
+        </div>
+    </footer>
+</div>
+<div class="map_warp" id="mapWrap" style="height: 677px;">
+    <div class="search_wrap">
+        <div class="search_box">
+            <input id="searchId" class="comm_txt" type="text" placeholder="搜搜地点">
+            <button id="positioning" class=""></button>
+        </div>
+    </div>
+    <div class="map_wrap" id="l-map"></div>
+    <div class="addres_wrap">
+        <button class="comm_btn1 fr" id="selectBtn">确定</button>
+        <button class="clear_btn fr" id="clearBtn"></button>
+        <strong>地址：</strong>
+        <span id="suggestId"></span>
+    </div>
+</div>
+</body>
+</html>

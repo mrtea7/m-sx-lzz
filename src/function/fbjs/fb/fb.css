@@ -1,0 +1,22 @@
+.section{
+  /*padding: 15px;*/
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.item-wrap{
+  border-bottom: 1px solid #e5e5e5;
+  -webkit-border-image: url(../imgs/border_dark.gif) 2 stretch;
+
+}
+
+.section > textarea.item{
+  width: 100%;
+  height: 100px;
+  margin-left: -5px;
+  margin-top: -15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+
+}

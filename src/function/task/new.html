@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta charset="utf-8">
+  <title>信息发布</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-
-  <title>信息发布</title>
-  <meta charset="utf-8">
   <meta content="telephone=no, address=no" name="format-detection">
   <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no"
         name="viewport">
-
   <!--<link href="../../../assets/stylesheets/main.css" rel="stylesheet"/>-->
   <!--<link href="../../../assets/stylesheets/iDialog.css" rel="stylesheet"/>-->
   <!--<link href="../../../assets/stylesheets/mobiscroll.css" rel="stylesheet"/>-->
-  <link rel="stylesheet" href="../../../assets/styles/main.css"/>
-
+  <link rel="stylesheet" href="../../assets/styles/main.css"/>
 </head>
 <body onselectstart="return true;" ondragstart="return false;" style="overflow: hidden;">
-
 
 <!--wxconfig-->
 <input type="text" id="url" value="http://weixin.zssglglj.com:8088/function/fbjs/fb/fb.html" style="display: none"/>
@@ -28,7 +24,7 @@
       <textarea class="item" name="content" placeholder="请填写任务内容。"></textarea>
     </div>
     <div class="item-wrap">
-    asdfasdfasdfasdfasdf <br/>asdfasdfasdfasdfasdf<br/>asdfasdfasdfasdfasdf<br/>
+      asdfasdfasdfasdf <br/>asdfasdfasdfasdfasdf<br/>asdfasdfasdfasdfasdf<br/>
       asdfasdf
     </div>
   </section>
@@ -125,7 +121,6 @@
 </div>
 
 
-
 <div class="map_warp" id="mapWrap">
   <div class="search_wrap">
     <div class="search_box">
@@ -169,9 +164,9 @@
 <script>
   /*$(document).ready(function (e) {
 
-    e.preventDefault();
+   e.preventDefault();
 
-  });*/
+   });*/
   $.getJSON('../../../json/fb.json', function (data) {
     var sendUser = data.data.sendUser;
     $("#sendUser").attr('value', sendUser)

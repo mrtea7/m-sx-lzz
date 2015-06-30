@@ -1,0 +1,40 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /*-webkit-touch-callout: none;*/
+  /*-webkit-user-select: none;*/
+  outline: none;
+}
+
+html {
+  height: 100%;
+  font-size: 10px; // 兼容 rem
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 14px; // 用于直接继承
+  color: #888888;
+  background-color: #e5e5e5;
+}
+
+textarea {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,12 +14,6 @@ module.exports = {
       src: 'main.scss',
       dest: '<%= pkg.path.src %>/assets/styles',
       ext: '.css'
-    },{
-      expand: true,
-      cwd: '<%= pkg.path.src %>/assets/styles',
-      src: 'login.scss',
-      dest: '<%= pkg.path.src %>/assets/styles',
-      ext: '.css'
     }]
   }
 }

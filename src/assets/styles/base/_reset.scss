@@ -21,9 +21,18 @@ body {
   background-color: #e5e5e5;
 }
 
+input, button, select, textarea {
+  outline: none;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 textarea {
   -webkit-touch-callout: default;
   -webkit-user-select: text;
+  -webkit-appearance: none;
+  resize: none;
 }
 
 

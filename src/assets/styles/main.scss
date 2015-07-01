@@ -6,6 +6,10 @@
 */
 
 @import "base/reset";
+@import "utils/mixins/position/origin-center";
+@import "utils/mixins/position/vertical-align";
+@import "utils/mixins/mixin";
+
 @import "vendors/iconfont";
 
 @import "modules/error";

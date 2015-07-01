@@ -5,6 +5,9 @@
   /*-webkit-touch-callout: none;*/
   /*-webkit-user-select: none;*/
   outline: none;
+  // 影响了 dd、input[radio] 等
+  padding: 0;
+  margin: 0;
 }
 
 html {

@@ -26,16 +26,29 @@
 <!--wxconfig-->
 <input type="text" id="url" value="http://weixin.zssglglj.com:8088/function/fbjs/fb/fb.html" style="display: none"/>
 
-<div class="container">
-  <section class="section" style="margin-bottom: 1px;">
-    <textarea class="item" name="taskcontent" placeholder="请填写任务内容。"></textarea>
-  </section>
+<div class="l-container">
+  <div class="l-section task-body">
+    <div class="task-body-text">
+      <!--oninput="document.getElementById('text-length').innerText = (this.maxLength-this.value.length);"-->
+      <textarea name="content" placeholder="请填写任务内容。" maxlength="300" ></textarea>
+      <!--<p id="text-length" class="text-length">300</p>-->
+    </div>
+    <div class="task-body-audio">
+      <div class="task-body-audio-ctrl in-remake"></div>
+      <div class="task-body-audio-ctrl in-listen"></div>
+    </div>
+    <footer class="task-body-btn">
+      <div class="task-body-btn-text"></div>
+      <div class="task-body-btn-audio"></div>
+    </footer>
+  </div>
+  <!--<section class="section">
+    <div class="item  is-center">
+      <i class="record-ready item-inner"></i>
+      <span class="item-inner">我要说话</span></div>
+  </section>-->
 
-  <section class="section">
-    <div class="item is-compact is-center"><i class="record-ready"></i><span>我要说话</span></div>
-  </section>
-
-  <section class="section">
+  <!--<section class="section">
     <div class="item with-border-dark ">
       <span class="item-title">案件类型</span>
 
@@ -61,22 +74,56 @@
   </section>
 
   <section class="section">
+    <div class="item">
+      <span class="item-title">截止时间</span>
 
+      <div class="item-value">未选择
+      </div>
+      <i class="item-trigger"></i>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="item l-tbox">
+      <span class="item-title l-tcell">优先级</span>
+
+      <div class="l-tcell">
+        <dl class="dl-level">
+          <dd>
+            <label>
+              <input type="radio" class="radio" name="priority" value="1">
+              <span>低</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" checked="checked" class="radio" name="priority" value="2">
+              <span>中</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" class="radio" name="priority" value="3">
+              <span>高</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+    </div>
   </section>
 
 
   <footer>
     <button id="save">创建</button>
-  </footer>
+  </footer>-->
 </div>
 </body>
 </html>
 <script src="http://192.168.0.109:8080/target/target-script-min.js#anonymous"></script>
 <script>
-  save.addEventListener('touchstart', function(e){
+  save.addEventListener('touchstart', function (e) {
     var bodyW = document.body.offsetWidth
     console.log(bodyW);
-
 
 
   })

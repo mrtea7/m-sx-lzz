@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>�������</title>
+  <meta charset="utf-8">
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <meta content="eric.wu" name="author">
+  <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+  <!--	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires"> -->
+  <meta content="telephone=no, address=no" name="format-detection">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <link href="http://stc.iwork365.com/resource/iTask/css/reset.css?v=201506301602" rel="stylesheet"/>
+  <link href="http://stc.iwork365.com/resource/iTask/css/common.css?v=201506301602" rel="stylesheet"/>
+  <script src="http://stc.iwork365.com/resource/iTask/lib/zepto.min.js?v=201506301602"></script>
+  <script src="http://stc.iwork365.com/resource/iTask/lib/helper.js?v=201506301602"></script>
+  <script src="http://stc.iwork365.com/resource/iTask/js/main.js?v=201506301602"></script>
+  <link href="http://stc.iwork365.com/resource/iOther/css/iDialog.css" rel="stylesheet"/>
+  <script src="http://stc.iwork365.com/resource/iOther/js/helper.js"></script>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+
+<link href="http://stc.iwork365.com/resource/iTask/css/addTask.css?v=201506301602" rel="stylesheet"/>
+<link href="http://stc.iwork365.com/resource/iTask/lib/mobiscroll/css/mobiscroll.min.css?v=201506301602" rel="stylesheet"/>
+<link href="http://stc.iwork365.com/resource/iTask/css/calendar.css?v=201506301602" rel="stylesheet"/>
+<link href="http://stc.iwork365.com/resource/iTask/css/audio.css?v=201506301602" rel="stylesheet"/>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+  //config
+  var APP = {
+    page: "addTask",
+    openId: "00000000000000001",
+    urls: {
+      saveAudio: '/task/manager/CacheAudio'
+    },
+    localId: null, //���ڱ���¼��ID
+    //already_remind: false //�ж��Ƿ��Ǵ�ѡ�긺����/Э����/������֮���������
+  };
+  wx.config({
+    debug: false, // ��������ģʽ,���õ�����api�ķ���ֵ���ڿͻ���alert��������Ҫ�鿴����Ĳ��������pc�˴򿪣�������Ϣ��ͨ��log���������pc��ʱ�Ż��ӡ��
+    appId: 'wxb1cd87c3f278aa11', // ������ںŵ�Ψһ��ʶ
+    timestamp: 1435651375,// ������ǩ���ʱ���
+    nonceStr: 'gWP65kuK1mVVigl9', // ������ǩ������
+    signature: '6b24ced6be14dec3de70ad278beab55e5af2eeac',// ���ǩ���¼1
+    jsApiList: ['startRecord', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice'] // �����Ҫʹ�õ�JS�ӿ��б?����JS�ӿ��б��¼2
+  });
+</script>
+
+<script src="http://stc.iwork365.com/resource/iTask/lib/mobiscroll/js/mobiscroll.min.js?v=201506301602"></script>
+<script src="http://stc.iwork365.com/resource/iTask/js/audioPlayer.js?v=201506301602"></script>
+<script src="http://stc.iwork365.com/resource/iTask/js/addTask.js?v=201506301602"></script>
+<script src="http://stc.iwork365.com/resource/iTask/js/mpic.js?v=201506301602"></script>
+<script src="http://stc.iwork365.com/resource/iOther/js/helper.js?v=201506301602"></script>
+<script src="http://stc.iwork365.com/resource/iTask/js/calendar.js?v=201506301602"></script>
+<div data-role="container" class="container addTask on" id="addTask_container">
+  <header data-role="header"><!----></header>
+  <section data-role="body" class="body">
+    <form enctype="multipart/form-data" id="form_task" action="/task/manager/save/" method="post" onsubmit="return validteForm(this, event);">
+      <div class="section_div task_des">
+        <div class="text_task_des ">
+          <textarea placeholder="��д�������ݡ�" name="content" maxlength="300" oninput="document.getElementById('text_length').innerText = (this.maxLength-this.value.length);"></textarea>
+
+          <p id="text_length" class="text_length">300</p>
+        </div>
+        <div class="audio_task_des ">
+          <div>
+            <div class="audio_task_ctrl record ">
+              <div></div>
+              <div>��¼</div>
+            </div>
+          </div>
+          <div>
+            <div class="audio_task_time">0"</div>
+            <input type="hidden" name="localId" id="localId"/>
+            <input type="hidden" name="serverId" id="serverId" value="0"/>
+            <input type="hidden" name="audioDuration" id="audioDuration" value=""/>
+            <input type="hidden" name="speech_url" id="speech_url" value=""/>
+            <input type="hidden" name="textOrAudio" id="textOrAudio" value="text"/>
+          </div>
+          <div>
+            <div class="audio_task_ctrl listen " data-status="stopped" data-sound="" data-duration="">
+              <div></div>
+              <div>����</div>
+            </div>
+          </div>
+        </div>
+        <div class="task_btn">
+          <div class="text_btn on">
+            <span></span>
+            <span>��Ҫ˵��</span>
+          </div>
+          <div class="audio_btn ">
+            <span></span>
+            <span>�л������ַ���</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section_div">
+        <ul class="list_ul">
+          <li>
+            <a href="javascript:;" id="js-select-head" class="tbox arrow">
+              <div><label>������</label></div>
+              <div>
+                <p id="task_fzr_p"><span>δѡ��<input type="hidden" name="head_id" value="0"/></span></p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" id="js-select-assist" class="tbox arrow">
+              <div><label>����Э����</label></div>
+              <div>
+                <p id="task_xzr_p">
+                  <span>δѡ��</span>
+
+                </p>
+
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" id="js-select-cc" class="tbox arrow">
+              <div><label>����</label></div>
+              <div>
+                <p id="task_cs_p">
+                  <span>δѡ��</span>
+                </p>
+
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="section_div">
+        <ul class="list_ul">
+          <li>
+            <a href="javascript:;" class="tbox arrow" onclick="setDate.handleEvent({data:{method:'getDate'}});">
+              <div><label>��ֹʱ��</label></div>
+              <div><input type="text" id="addTime" name="task_endTime" value="" readonly/></div>
+              <!-- <div><label id="task_endTime_label"><input type="hidden" value="" name="task_endTime" /></label></div> -->
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="section_div section_task_remind" style="display:none;">
+        <ul class="list_ul">
+          <li>
+            <a href="javascript:;" class="tbox" onclick="set_task_remind_time(this, event, -1);">
+              <div><label>����</label></div>
+              <div class="select_box">
+                <select id="remind" name="reminder_time_type">
+                  <option value="" selected="selected" disabled="disabled">��������ʱ��</option>
+                  <option value="1">����ʱ</option>
+                  <option value="2">����ǰһСʱ</option>
+                  <option value="3">����ǰ��Сʱ</option>
+                  <option value="4">����ǰ1��</option>
+                  <option value="5">����ǰ2��</option>
+                </select>
+              </div>
+              <!-- <div><label id="remind_time_label">��������ʱ��</label></div> -->
+            </a>
+          </li>
+        </ul>
+        <!-- <div id="remind_time_select" class="remind_time_select" ontouchmove="return false;" >
+          <ul>
+            <ol>
+                                              <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="1" onclick="set_task_remind_time(this, event, 0);" /><span>����ʱ</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="2" onclick="set_task_remind_time(this, event, 1);" /><span>����ǰһСʱ</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="3" onclick="set_task_remind_time(this, event, 2);" /><span>����ǰ��Сʱ</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="4" onclick="set_task_remind_time(this, event, 3);" /><span>����ǰ1��</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="5" onclick="set_task_remind_time(this, event, 4);" /><span>����ǰ2��</span>
+                                    </label>
+                                </li>
+                                        </ol>
+          </ul>
+          <div class="mask_div" ontouchstart="set_task_remind_time(this, event, 5); return false;" onclick="set_task_remind_time(this, event, 5);"></div>
+        </div> -->
+      </div>
+      <div class="section_div">
+        <ul class="list_ul">
+          <li>
+            <a href="javascript:;" class="tbox">
+              <div><label>���ȼ�</label></div>
+              <div>
+                <dl class="dl_level">
+                  <dd>
+                    <label>
+                      <input type="radio" class="radio" name="priority" value="1"/>
+                      <span>��</span>
+                    </label>
+                  </dd>
+                  <dd>
+                    <label>
+                      <input type="radio" checked="checked" class="radio" name="priority" value="2"/>
+                      <span>��</span>
+                    </label>
+                  </dd>
+                  <dd>
+                    <label>
+                      <input type="radio" class="radio" name="priority" value="3"/>
+                      <span>��</span>
+                    </label>
+                  </dd>
+                </dl>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="section_div">
+        <ul id="list_task_pic" class="list_task_pic">
+          <li>
+            <div>
+              <input type="file" accept="image/jpg, image/jpeg, image/png" onchange="form_pics.addImg(this);" name="pics[]"/><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="/>
+              <span onclick="form_pics.removeImg(this);">��</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="section_div task_submit task_finish">
+        <input type="hidden" name="task_id" value="0"/>
+        <!-- <input type="hidden" name="task_type" value="1"/> -->
+        <!-- <input type="hidden" name="speech_id" value="0"/> -->
+        <input type="button" value="����" id="btn_create"/>
+      </div>
+      <input type="hidden" name="cache_type" id="cache_type" value=""/>
+      <input type="hidden" name="op" id="op" value="Add"/>
+      <!-- <div class="section_div task_submit task_finish">
+        <input type="button" value="���" id="btn_finish" />
+      </div>
+      <div class="section_div task_submit task_resend">
+        <input type="button" value="�ط�����" id="btn_resend" />
+      </div> -->
+    </form>
+  </section>
+  <footer data-role="footer">
+    <div data-role="copyright">
+      <a href="javascript:;" class="copyright">?iWork365����֧��</a>
+    </div>
+    <div id="record_mode" class="record_mode">
+      <ul>
+        <li>
+          <div id="record_btn">��ס˵��</div>
+        </li>
+      </ul>
+      <div class="mask record_mask1"></div>
+      <div class="mask record_mask2">
+        <div class="ico_record"></div>
+        <div class="record_duration">59"</div>
+      </div>
+    </div>
+  </footer>
+</div>
+<!-- <iframe data-role="iframe_page" data-iframe_page="page_calendar" id="page_calendar" class="page_calendar" src="http://stc.iwork365.com/resource/iOther/calendar.html#1"></iframe> -->
+<!-- <iframe data-role="iframe_page" data-iframe_page="page_calendar" id="page_contacts" class="page_calendar" src="http://stc.iwork365.com/resource/iOther/contacts.html#1"></iframe> -->
+
+</div>
+</body>
+</html>
+<script src="http://stc.iwork365.com/resource/iTask/js/other.js?v=201506301602"></script>
+<script>
+  /*$('#js-select-head').click(function(){
+   var url = '/task/manager/cache/';
+   $('#cache_type').val('selectHead');
+   $.post(url, $('#form_task').serialize(), function(data){
+   if(data.status == 0){
+   window.location = data.url;
+   }
+   }, 'json');
+   });
+   $('#js-select-assist').click(function(){
+   var url = '/task/manager/cache/';
+   $('#cache_type').val('selectAssist');
+   $.post(url, $('#form_task').serialize(), function(data){
+   if(data.status == 0){
+   window.location = data.url;
+   }
+   }, 'json');
+   });
+   $('#js-select-cc').click(function(){
+   var url = '/task/manager/cache/';
+   $('#cache_type').val('SelectCc');
+   $.post(url, $('#form_task').serialize(), function(data){
+   if(data.status == 0){
+   window.location = data.url;
+   }
+   }, 'json');
+   });*/
+</script>

@@ -1,0 +1,17 @@
+/* 
+  多一种方式 写响应式设计
+
+  使用方式：
+  @include lenovo-tablet {
+    // write (s)css style here ...
+  }
+
+*/
+
+
+@mixin lenovo-tablet {
+  @media screen and (min-width: 480px) and (max-width: 639px) {
+    @content;
+  }
+}
+

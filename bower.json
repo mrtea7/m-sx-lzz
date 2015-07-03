@@ -4,9 +4,9 @@
   "authors": [
     "wenling-lichao <wenling.lichao@gmail.com>"
   ],
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-
+    "zepto": "~1.1.6",
+    "mobiscroll": "~2.16.0"
   }
 }

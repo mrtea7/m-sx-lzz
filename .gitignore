@@ -3,6 +3,8 @@
 .sass-cache
 node_modules
 build
+src/assets/lib
+
 
 
 

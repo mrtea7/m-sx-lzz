@@ -6,13 +6,12 @@ $iconfont-fonts-path: '../fonts/iconfont/';
 
 
 @font-face {font-family: "iconfont";
-  src: url($iconfont-fonts-path + 'iconfont.eot'); /* IE9*/
-  src: url($iconfont-fonts-path + 'iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url($iconfont-fonts-path + 'iconfont.woff') format('woff'), /* chrome、firefox */
-  url($iconfont-fonts-path + 'iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url($iconfont-fonts-path + 'iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+  //src: url($iconfont-fonts-path + 'iconfont.eot'); /* IE9*/
+  //src: url($iconfont-fonts-path + 'iconfont.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
+  src: url($iconfont-fonts-path + 'iconfont.woff') format('woff'); /* chrome、firefox */
+  src: url($iconfont-fonts-path + 'iconfont.ttf') format('truetype'); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  //src: url($iconfont-fonts-path + 'iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
-
 
 .iconfont {
   font-family:"iconfont" !important;

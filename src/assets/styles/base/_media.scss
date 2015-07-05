@@ -23,12 +23,13 @@ $lenovo-tablet: "screen and (min-width: 600px) and (max-width: 600px)";
 --------------------------*/
 // 默认的是一个范围值
 html {
-  font-size: 10px
+  font-size: 10px;
 }
 
 @media #{$lenovo-tablet} {
   html {
-    font-size: 18.75px
+    font-size: 14px;
+    //font-size: 18.75px; // 标准比例并不一定美观
   }
 }
 

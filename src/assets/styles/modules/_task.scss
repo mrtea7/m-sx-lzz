@@ -11,9 +11,6 @@
   width: 100%;
   height: 11rem;
   background-color: #fff;
-  /*@include lenovo-tablet {
-    height: 180px;
-  }*/
   //outline: 1px dashed blueviolet;
 }
 
@@ -67,10 +64,6 @@
   padding: 1.8rem 0;
   @extend .iconfont;
   font-size: 4rem;
-  /*@include lenovo-tablet {
-    padding: 3rem 0;
-    font-size: 6rem;
-  }*/
 }
 
 .task-icon-remake{@extend .icon-tingzhi;}
@@ -81,10 +74,6 @@
   -webkit-box-flex: 1;
   color: #ff303b;
   font-size: 1.2rem;
-  //outline: 1px dashed black;
-  /*@include lenovo-tablet {
-    font-size: 1.5rem;
-  }*/
 }
 
 .task-body-audio-time {
@@ -97,16 +86,9 @@
   color: #fff;
   background-color: #06bf04;
   font-weight: 700;
-  outline: 1px dashed #06bf04;
-  /*@include lenovo-tablet {
-    height: 12rem;
-    line-height: 12rem;
-    width: 12rem;
-    border-radius: 6rem;
-    font-size: 2.5rem;
-    margin: 0 5rem;
-  }*/
+  //outline: 1px dashed #06bf04;
 }
+
 
 /*--------------------------
   $ task-btn
@@ -114,6 +96,7 @@
 .task-btn {
   height: 4rem;
   line-height: 4rem;
+  color: #9da0a5;
   background-color: #ffffff;
   border-top: 1px solid #e0e0e0;
   display: -webkit-box;
@@ -136,19 +119,16 @@
 }
 
 .task-btn-audio {
-  //width: 20rem;
   margin-left: auto;
   margin-right: auto;
-  outline: 1px dashed blue;
-  /*&::before {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    width: 3rem;
-    height: 3rem;
-    background: url(../imgs/elements/1.png) no-repeat 0 -360px;
-    background-size: 3rem auto;
-  }*/
+  //outline: 1px dashed blue;
+}
+
+.task-icon-write{
+  @extend .iconfont;
+  @extend .icon-xiepinglun;
+  font-size: 2rem;
+  margin-right: 0.5rem;
 }
 
 /*

@@ -22,12 +22,11 @@ $iconfont-fonts-path: '../fonts/iconfont/';
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-huatong:before { content: "\e601"; }
+.icon-huatong-solid:before { content: "\e601"; }
 .icon-arrow-1:before { content: "\e605"; }
-.icon-xiepinglun:before { content: "\e600"; }
-.icon-huatong1:before { content: "\e604"; }
-.icon-xie:before { content: "\e606"; }
-.icon-fanhui:before { content: "\e603"; }
-.icon-bofang:before { content: "\e602"; }
-.icon-tingzhi:before { content: "\e607"; }
+.icon-write:before { content: "\e600"; }
+.icon-huatong-hollow:before { content: "\e604"; }
+.icon-back:before { content: "\e603"; }
+.icon-run:before { content: "\e602"; }
+.icon-stop:before { content: "\e607"; }
 

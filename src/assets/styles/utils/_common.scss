@@ -1,3 +1,7 @@
+@charset "utf-8";
+
+
+// todo：这里有优先级问题，可能被模块相同属性所覆盖，一般地作为状态类嵌入到模块中
 .hide{
   display: none;
 }

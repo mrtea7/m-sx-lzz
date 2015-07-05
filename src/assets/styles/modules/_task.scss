@@ -17,6 +17,9 @@
 // 当前调试暂时隐藏
 .task-body-text {
   height: 100%;
+  &.hide{
+    display: none;
+  }
   > textarea {
     display: block;
     width: 100%;
@@ -33,6 +36,9 @@
   display: -webkit-box;
   -webkit-box-align: center;
   -webkit-box-pack: justify;
+  &.hide{
+    display: none;
+  }
 }
 
 .task-body-audio-ctrl {
@@ -101,10 +107,13 @@
   border-top: 1px solid #e0e0e0;
   display: -webkit-box;
   -webkit-box-pack: center;
+
+  //> *{outline: 1px dashed black;}
 }
 
 .task-icon-write,
 .task-icon-speak{
+  //outline: 1px dashed blue;
   @extend .iconfont;
   font-size: 2rem;
   margin-right: 0.5rem;

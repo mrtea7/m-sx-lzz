@@ -9,25 +9,26 @@
   小米4/红米   360
   lenovo      600         895
 
+  尝试用固定值，然后按比例设置 rem
 
   PS：页面上已经禁止了 ios 的缩放比
 */
 
-// 范围值，不好做比例
-$lenovo-tablet: "screen and (min-width: 480px) and (max-width: 639px)";
+// 固定值
+$lenovo-tablet: "screen and (min-width: 600px) and (max-width: 600px)";
 
 
 /*--------------------------
   $ font-size
 --------------------------*/
-
+// 默认的是一个范围值
 html {
   font-size: 10px
 }
 
 @media #{$lenovo-tablet} {
   html {
-    font-size: 12px
+    font-size: 18.75px
   }
 }
 

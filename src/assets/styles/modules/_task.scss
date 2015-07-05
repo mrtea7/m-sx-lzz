@@ -13,17 +13,18 @@
   width: 100%;
   height: 110px;
   background-color: #fff;
-  @include lenovo-tablet{
+  @include lenovo-tablet {
     height: 180px;
   }
 }
 
+// 当前隐藏了
 .task-body-text {
   height: 100%;
   > textarea {
     display: block;
     width: 100%;
-    height: 100px;
+    height: 100%; // 100px
     margin: 0;
     padding: 5px;
     line-height: 20px;
@@ -34,45 +35,83 @@
 .task-body-audio {
   height: 100%;
   display: -webkit-box;
-  //-webkit-box-orient: horizontal;
   -webkit-box-align: center;
-  //-webkit-box-direction: normal;
-  //-webkit-box-pack: center;
+  -webkit-box-pack: justify;
 }
 
 .task-body-audio-ctrl {
-  width: 40px;
-  height: 80px;
-  outline: 1px dashed blue;
-  //-webkit-box-flex: 1;
-  @include lenovo-tablet{
-    width: 60px;
-    height: 100px;
+  height: 100%;
+  line-height: 100%;
+  text-align: center;
+  -webkit-box-flex: 1;
+  // 嵌套 flexbox
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: baseline; // 与时间上的计数对齐
+  //outline: 1px dashed blue;
+  &::before{
+    /* 用于 flexbox 布局，content 必须有文本且为透明，用于撑高度
+      box-flex 须与 block 一起使用
+    */
+    content: 'hi';
+    color: transparent;
+    display: block;
+    -webkit-box-flex: 1;
+    //outline: 1px dashed chartreuse;
   }
-  &.remake {
+  > * {
+    //outline: 1px dashed orangered;
+    color: #ff303b;
   }
-  &.listen {
+  > .text {
+    -webkit-box-flex: 1;
+    font-size: 1.2rem;
+    //outline: 1px dashed black;
+    @include lenovo-tablet {
+      font-size: 1.5rem;
+    }
   }
-
+  > .ico-remake,
+  > .ico-listen {
+    display: block;
+    // padding 解决伪元素溢出
+    padding: 1.8rem 0;
+    @extend .iconfont;
+    font-size: 4rem;
+    @include lenovo-tablet {
+      padding: 3rem 0;
+      font-size: 6rem;
+    }
+  }
+  > .ico-remake {
+    @extend .icon-tingzhi;
+  }
+  > .ico-listen {
+    @extend .icon-bofang;
+  }
 }
 
-.task-body-audio-time{
-  height: 80px;
-  line-height: 80px;
-  width: 80px;
-  border-radius: 40px;
+.task-body-audio-time {
+  height: 9rem;
+  line-height: 9rem;
+  width: 9rem;
+  border-radius: 4.5rem;
   text-align: center;
+  margin: 0 3rem; // 仿 iwork 设计稿，来往两边推
   color: #fff;
   background-color: #06bf04;
   font-weight: 700;
-  @include lenovo-tablet{
-    height: 120px;
-    line-height: 120px;
-    width: 120px;
-    border-radius: 60px;
+  outline: 1px dashed #06bf04;
+  @include lenovo-tablet {
+    height: 12rem;
+    line-height: 12rem;
+    width: 12rem;
+    border-radius: 6rem;
+    font-size: 2.5rem;
+    margin: 0 5rem;
   }
 }
-
 
 /*--------------------------
   $ task-btn

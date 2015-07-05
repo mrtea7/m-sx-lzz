@@ -2,12 +2,12 @@
  功能：切换为音频输入
  */
 $('.js-task-btn-text').tap(function () {
-  // 隐藏文本
+  // 隐藏文本/出场动画
   $(this).addClass('hide');
-  $('.task-body-text').addClass('hide');
+  $('.task-body-text').removeClass('task-slideIn').addClass('task-slideOut');
   // 显示音频
   $('.js-task-btn-audio').removeClass('hide');
-  $('.task-body-audio').removeClass('hide');
+  $('.task-body-audio').removeClass('hide task-slideOut').addClass('task-slideIn');
 });
 
 /*
@@ -16,11 +16,12 @@ $('.js-task-btn-text').tap(function () {
 $('.js-task-btn-audio').tap(function () {
   // 隐藏音频
   $(this).addClass('hide');
-  $('.task-body-audio').addClass('hide');
+  //$('.task-body-audio').addClass('hide');
   // 隐藏文本
   $('.js-task-btn-text').removeClass('hide');
-  $('.task-body-text').removeClass('hide');
+  //$('.task-body-text').removeClass('hide');
 });
+
 
 
 

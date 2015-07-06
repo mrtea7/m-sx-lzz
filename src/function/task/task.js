@@ -28,11 +28,11 @@ function _toggleTextBody(bool){
   if (bool) {
     // 显示：显示文本/进场动画
     $('.js-task-btn-text').removeClass('hide');
-    $('.task-body-text').removeClass('hide task-slideOut').addClass('task-slideIn');
+    $('.task-body-text').removeClass('hide');
   }else{
     // 隐藏
     $('.js-task-btn-text').addClass('hide');
-    $('.task-body-text').removeClass('task-slideIn').addClass('task-slideOut');
+    $('.task-body-text').addClass('hide');
   }
 }
 

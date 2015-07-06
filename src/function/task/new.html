@@ -30,72 +30,80 @@
 <!--<input type="text" id="url" value="http://weixin.zssglglj.com:8088/function/fbjs/fb/fb.html" style="display: none"/>-->
 
 <div class="l-container">
-  <div class="l-section">
-    <div class="task-body">
-      <div class="task-body-text ">
-        <textarea name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
-      </div>
-      <div class="task-body-audio hide">
-        <div class="task-body-audio-ctrl">
-          <div class="task-icon-remake"></div>
-          <div class="task-icon_text">重录</div>
+  <section data-role="body" class="body">
+    <div class="l-section">
+      <div class="task-body">
+        <div class="task-body-text ">
+          <textarea name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
         </div>
-        <div class="task-body-audio-time">1"</div>
-        <div class="task-body-audio-ctrl ">
-          <div class="task-icon-listen"></div>
-          <div class="task-icon_text">试听</div>
+        <div class="task-body-audio hide">
+          <div class="task-body-audio-ctrl">
+            <div class="task-icon-remake"></div>
+            <div class="task-icon_text">重录</div>
+          </div>
+          <div class="task-body-audio-time">1"</div>
+          <div class="task-body-audio-ctrl ">
+            <div class="task-icon-listen"></div>
+            <div class="task-icon_text">试听</div>
+          </div>
         </div>
       </div>
+      <footer class="task-btn">
+        <div class="js-task-btn-text "><i class="task-icon-speak"></i>我要说话</div>
+        <div class="js-task-btn-audio hide"><i class="task-icon-write"></i>切换到文字发布</div>
+      </footer>
     </div>
-    <footer class="task-btn">
-      <div class="js-task-btn-text "><i class="task-icon-speak"></i>我要说话</div>
-      <div class="js-task-btn-audio hide"><i class="task-icon-write"></i>切换到文字发布</div>
-    </footer>
-  </div>
 
-  <div class="l-section">
-    <ul class="task-list">
-      <li><a href="javascript:void(0);">
-        <div class="task-list-label">负责人</div>
-        <div class="task-list-value">未选择</div>
-        <div class="task-list-arrow"></div></a></li>
-      <li><a href="javascript:void(0);">
-        <div class="task-list-label">任务协助人</div>
-        <div class="task-list-value">未选择</div>
-        <div class="task-list-arrow"></div></a></li>
-      <li><a href="javascript:void(0);">
-        <div class="task-list-label">抄送</div>
-        <div class="task-list-value">未选择</div>
-        <div class="task-list-arrow"></div></a></li>
-    </ul>
-  </div>
+    <div class="l-section">
+      <ul class="task-list">
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">负责人</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">任务协助人</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">抄送</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+      </ul>
+    </div>
 
-  <div class="l-section">
-    <ul class="task-list">
-      <li><a href="javascript:void(0);">
-        <div class="task-list-label">截止时间</div>
-        <div class="task-list-value">未选择</div>
-        <div class="task-list-arrow"></div></a></li>
-    </ul>
-  </div>
+    <div class="l-section">
+      <ul class="task-list">
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">截止时间</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+      </ul>
+    </div>
 
-  <div class="l-section">
-    <ul class="task-list">
-      <li><a href="javascript:void(0);">
-        <div class="task-list-label">优先级</div>
-        <div class="task-list-value"></div>
+    <div class="l-section">
+      <ul class="task-list">
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">优先级</div>
+          <div class="task-list-value"></div>
         </a></li>
 
-    </ul>
-  </div>
+      </ul>
+    </div>
 
-  <!--<div class="l-section">-->
+    <!--<div class="l-section">-->
     <div class="task-upload-photo"></div>
-  <!--</div>-->
+    <!--</div>-->
 
-  <div class="task-btn-create">
-    <a href="javascript:void(0);">创建</a>
-  </div>
+    <div class="task-btn-create">
+      <a href="javascript:void(0);">创建</a>
+    </div>
+  </section>
+  <footer data-role="footer">
+    <div  class="copyright">
+      <a href="javascript:;" >&copy;弘云信息技术支持</a>
+    </div>
+  </footer>
+
 
 
   <!--<footer class="l-footer task-btn-record">

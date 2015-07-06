@@ -109,11 +109,11 @@
 .task-slideIn{
   animation: 0.3s fixedPoint-slideIn forwards ease-out;
   // mobile need -webkit-
-  -webkit-animation: 0.3s fixedPoint-slideIn forwards ease-out;
+  -webkit-animation: 0.3s slideIn forwards ease-out;
 }
 .task-slideOut{
   animation: 0.3s fixedPoint-slideOut forwards ease-out;
-  -webkit-animation: 0.3s fixedPoint-slideOut forwards ease-out;
+  -webkit-animation: 0.3s slideOut forwards ease-out;
 }
 
 

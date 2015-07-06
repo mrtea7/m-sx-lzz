@@ -6,19 +6,19 @@
 /*出场动画
   用于定点滑入滑出
 */
-@-webkit-keyframes fixedPoint-slideOut {
+@-webkit-keyframes slideOut {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(100%, 0, 0);
     opacity: 0;
   }
 }
 
 /*进场动画*/
-@-webkit-keyframes fixedPoint-slideIn {
+@-webkit-keyframes slideIn {
   0% {
     -webkit-transform: translate3d(100%, 0, 0);
     opacity: 0;

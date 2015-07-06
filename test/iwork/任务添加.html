@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>任务添加</title>
+    <meta charset="utf-8">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="eric.wu" name="author">
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <!--	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+        <meta content="no-cache" http-equiv="pragma">
+        <meta content="0" http-equiv="expires"> -->
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="http://stc.iwork365.com/resource/iTask/lib/zepto.min.js?v=201506301602" ></script>
+    <script src="js/helper.js" ></script>
+    <script src="js/main.js" ></script>
+    <link href="css/iDialog.css" rel="stylesheet" />
+    <script src="js/helper1.js" ></script> </head>
+<body onselectstart="return true;" ondragstart="return false;">
+
+<link href="css/addTask.css" rel="stylesheet" />
+<link href="css/mobiscroll.min.css" rel="stylesheet" />
+<link href="css/calendar.css" rel="stylesheet" />
+<link href="css/audio.css" rel="stylesheet" />
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+<!--<script>
+    //config
+    var APP = {
+        page:"addTask",
+        openId:"00000000000000001",
+        urls:{
+            saveAudio:'/task/manager/CacheAudio'
+        },
+        localId: null, //用于保存录音ID
+        //already_remind: false //判断是否是从选完负责人/协作人/抄送人之后跳回来的
+    };
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wxb1cd87c3f278aa11', // 必填，公众号的唯一标识
+        timestamp: 1435651375,// 必填，生成签名的时间戳
+        nonceStr: 'gWP65kuK1mVVigl9', // 必填，生成签名的随机串
+        signature: '6b24ced6be14dec3de70ad278beab55e5af2eeac',// 必填，签名，见附录1
+        jsApiList: ['startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice','stopVoice','onVoicePlayEnd','uploadVoice','downloadVoice'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+</script>-->
+
+<script src="js/mobiscroll.min.js"></script>
+<script src="js/audioPlayer.js" ></script>
+<script src="js/addTask.js" ></script>
+<script src="js/mpic.js" ></script>
+<script src="js/helper.js"></script>
+<script src="js/calendar.js" ></script>
+<div data-role="container" class="container addTask on" id="addTask_container">
+    <header data-role="header"><!----></header>
+    <section data-role="body" class="body">
+        <form enctype="multipart/form-data" id="form_task" action="/task/manager/save/" method="post" onsubmit="return validteForm(this, event);">
+            <div class="section_div task_des">
+                <div class="text_task_des ">
+                    <textarea placeholder="填写任务内容。" name="content" maxlength="300" oninput="document.getElementById('text_length').innerText = (this.maxLength-this.value.length);"></textarea>
+                    <p id="text_length" class="text_length">300</p>
+                </div>
+                <div class="audio_task_des ">
+                    <div>
+                        <div class="audio_task_ctrl record ">
+                            <div></div>
+                            <div>重录</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="audio_task_time">0"</div>
+                        <input type="hidden" name="localId" id="localId" />
+                        <input type="hidden" name="serverId" id="serverId" value="0" />
+                        <input type="hidden" name="audioDuration" id="audioDuration" value="" />
+                        <input type="hidden" name="speech_url" id="speech_url" value="" />
+                        <input type="hidden" name="textOrAudio" id="textOrAudio" value="text" />
+                    </div>
+                    <div>
+                        <div class="audio_task_ctrl listen " data-status="stopped" data-sound="" data-duration="">
+                            <div></div>
+                            <div>试听</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="task_btn">
+                    <div class="text_btn on">
+                        <span></span>
+                        <span>我要说话</span>
+                    </div>
+                    <div class="audio_btn ">
+                        <span></span>
+                        <span>切换到文字发布</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section_div">
+                <ul class="list_ul">
+                    <li>
+                        <a href="javascript:;" id="js-select-head" class="tbox arrow">
+                            <div><label>负责人</label></div>
+                            <div>
+                                <p id="task_fzr_p"><span>未选择<input type="hidden" name="head_id" value="0" /></span></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="js-select-assist" class="tbox arrow">
+                            <div><label>任务协助人</label></div>
+                            <div>
+                                <p id="task_xzr_p">
+                                    <span>未选择</span>
+
+                                </p>
+
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="js-select-cc" class="tbox arrow">
+                            <div><label>抄送</label></div>
+                            <div>
+                                <p id="task_cs_p">
+                                    <span>未选择</span>
+                                </p>
+
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="section_div">
+                <ul class="list_ul">
+                    <li>
+                        <a href="javascript:;" class="tbox arrow" onclick="setDate.handleEvent({data:{method:'getDate'}});">
+                            <div><label>截止时间</label></div>
+                            <div><input type="text" id="addTime" name="task_endTime" value="" readonly /></div>
+                            <!-- <div><label id="task_endTime_label"><input type="hidden" value="" name="task_endTime" /></label></div> -->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="section_div section_task_remind" style="display:none;">
+                <ul class="list_ul">
+                    <li>
+                        <a href="javascript:;" class="tbox" onclick="set_task_remind_time(this, event, -1);">
+                            <div><label>提醒</label></div>
+                            <div class="select_box">
+                                <select id="remind" name="reminder_time_type">
+                                    <option value="" selected="selected" disabled="disabled">设置提醒时间</option>
+                                    <option value="1" >结束时</option>
+                                    <option value="2" >结束前一小时</option>
+                                    <option value="3" >结束前两小时</option>
+                                    <option value="4" >结束前1周</option>
+                                    <option value="5" >结束前2周</option>
+                                </select>
+                            </div>
+                            <!-- <div><label id="remind_time_label">设置提醒时间</label></div> -->
+                        </a>
+                    </li>
+                </ul>
+                <!-- <div id="remind_time_select" class="remind_time_select" ontouchmove="return false;" >
+                    <ul>
+                        <ol>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="1" onclick="set_task_remind_time(this, event, 0);" /><span>结束时</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="2" onclick="set_task_remind_time(this, event, 1);" /><span>结束前一小时</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="3" onclick="set_task_remind_time(this, event, 2);" /><span>结束前两小时</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="4" onclick="set_task_remind_time(this, event, 3);" /><span>结束前1周</span>
+                                    </label>
+                                </li>
+                                                            <li>
+                                    <label>
+                                        <input type="radio" class="radio"  name="reminder_time_type" value="5" onclick="set_task_remind_time(this, event, 4);" /><span>结束前2周</span>
+                                    </label>
+                                </li>
+                                                    </ol>
+                    </ul>
+                    <div class="mask_div" ontouchstart="set_task_remind_time(this, event, 5); return false;" onclick="set_task_remind_time(this, event, 5);"></div>
+                </div> -->
+            </div>
+            <div class="section_div">
+                <ul class="list_ul">
+                    <li>
+                        <a href="javascript:;" class="tbox">
+                            <div><label>优先级</label></div>
+                            <div>
+                                <dl class="dl_level">
+                                    <dd>
+                                        <label>
+                                            <input type="radio"  class="radio" name="priority" value="1" />
+                                            <span>低</span>
+                                        </label>
+                                    </dd>
+                                    <dd>
+                                        <label>
+                                            <input type="radio"  checked="checked" class="radio" name="priority" value="2" />
+                                            <span>中</span>
+                                        </label>
+                                    </dd>
+                                    <dd>
+                                        <label>
+                                            <input type="radio"  class="radio" name="priority" value="3" />
+                                            <span>高</span>
+                                        </label>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="section_div">
+                <ul id="list_task_pic" class="list_task_pic">
+                    <li>
+                        <div>
+                            <input type="file" accept="image/jpg, image/jpeg, image/png" onchange="form_pics.addImg(this);" name="pics[]" /><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />
+                            <span onclick="form_pics.removeImg(this);">×</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="section_div task_submit task_finish">
+                <input type="hidden" name="task_id" value="0"/>
+                <!-- <input type="hidden" name="task_type" value="1"/> -->
+                <!-- <input type="hidden" name="speech_id" value="0"/> -->
+                <input type="button" value="创建" id="btn_create" />
+            </div>
+            <input type="hidden" name="cache_type" id="cache_type" value="" />
+            <input type="hidden" name="op" id="op" value="Add" />
+            <!-- <div class="section_div task_submit task_finish">
+                <input type="button" value="完成" id="btn_finish" />
+            </div>
+            <div class="section_div task_submit task_resend">
+                <input type="button" value="重发语音" id="btn_resend" />
+            </div> -->
+        </form>
+    </section>
+    <footer data-role="footer">
+        <div data-role="copyright">
+            <a href="javascript:;" class="copyright">?iWork365技术支持</a>
+        </div>
+        <div id="record_mode" class="record_mode">
+            <ul>
+                <li><div id="record_btn">按住说话</div></li>
+            </ul>
+            <div class="mask record_mask1"></div>
+            <div class="mask record_mask2">
+                <div class="ico_record"></div>
+                <div class="record_duration">59"</div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- <iframe data-role="iframe_page" data-iframe_page="page_calendar" id="page_calendar" class="page_calendar" src="http://stc.iwork365.com/resource/iOther/calendar.html#1"></iframe> -->
+<!-- <iframe data-role="iframe_page" data-iframe_page="page_calendar" id="page_contacts" class="page_calendar" src="http://stc.iwork365.com/resource/iOther/contacts.html#1"></iframe> -->
+
+</div>
+</body>
+</html>
+<script src="http://stc.iwork365.com/resource/iTask/js/other.js?v=201506301602" ></script>
+<script>
+    /*$('#js-select-head').click(function(){
+     var url = '/task/manager/cache/';
+     $('#cache_type').val('selectHead');
+     $.post(url, $('#form_task').serialize(), function(data){
+     if(data.status == 0){
+     window.location = data.url;
+     }
+     }, 'json');
+     });
+     $('#js-select-assist').click(function(){
+     var url = '/task/manager/cache/';
+     $('#cache_type').val('selectAssist');
+     $.post(url, $('#form_task').serialize(), function(data){
+     if(data.status == 0){
+     window.location = data.url;
+     }
+     }, 'json');
+     });
+     $('#js-select-cc').click(function(){
+     var url = '/task/manager/cache/';
+     $('#cache_type').val('SelectCc');
+     $.post(url, $('#form_task').serialize(), function(data){
+     if(data.status == 0){
+     window.location = data.url;
+     }
+     }, 'json');
+     });*/
+</script>

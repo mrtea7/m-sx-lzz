@@ -1,0 +1,29 @@
+
+.sound_record_img{
+    background: url("../../iTask/imgs/4.png") no-repeat 0 0;
+    -webkit-background-size: 100px auto;
+    width: 75px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sound_play_animation{
+    background: url("../../iTask/imgs/4.png") no-repeat -37px -30px;
+    -webkit-background-size: 100px auto;
+    width: 10px;
+    height: 30px;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.set_animation{
+    -webkit-animation: soundPlay 1s step-start infinite;
+}
+
+@-webkit-keyframes soundPlay{
+    0% {background-position: -7px -30px;}
+    33% {background-position: -17px -30px;}
+    66% {background-position: -27px -30px;}
+    100% {background-position: -37px -30px;}
+}

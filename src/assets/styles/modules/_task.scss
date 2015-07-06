@@ -2,6 +2,10 @@
 /*
   task-body
   task-btn
+  mask
+  task-list
+  上传图片
+  创建按钮
 */
 
 /*--------------------------
@@ -19,10 +23,10 @@
 .task-body-text {
   height: 100%;
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   right: 0;
-  &.hide{
+  &.hide {
     display: none;
   }
   > textarea {
@@ -39,13 +43,13 @@
 .task-body-audio {
   height: 100%;
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   right: 0;
   display: -webkit-box;
   -webkit-box-align: center;
   -webkit-box-pack: justify;
-  &.hide{
+  &.hide {
     display: none;
   }
 }
@@ -60,7 +64,7 @@
   -webkit-box-pack: center;
   -webkit-box-align: baseline; // 与时间上的计数对齐
   //outline: 1px dashed blue;
-  &::before{
+  &::before {
     /* 用于 flexbox 布局，content 必须有文本且为透明，用于撑高度
        box-flex 须与 block 一起使用
     */
@@ -72,7 +76,7 @@
 }
 
 .task-icon-remake,
-.task-icon-listen{
+.task-icon-listen {
   color: #ff303b;
   display: block;
   // padding 解决伪元素溢出
@@ -81,11 +85,15 @@
   font-size: 4rem;
 }
 
-.task-icon-remake{@extend .icon-stop;}
+.task-icon-remake {
+  @extend .icon-stop;
+}
 
-.task-icon-listen{@extend .icon-run;}
+.task-icon-listen {
+  @extend .icon-run;
+}
 
-.task-icon_text{
+.task-icon_text {
   -webkit-box-flex: 1;
   color: #ff303b;
   font-size: 1.2rem;
@@ -104,19 +112,33 @@
   //outline: 1px dashed #06bf04;
 }
 
-
 // 动画切换 task-body
-.task-slideIn{
-  animation: 0.3s fixedPoint-slideIn forwards ease-out;
+.task-slideIn {
+  //animation: 0.3s fixedPoint-slideIn forwards ease-out;
   // mobile need -webkit-
   -webkit-animation: 0.3s slideIn forwards ease-out;
 }
-.task-slideOut{
-  animation: 0.3s fixedPoint-slideOut forwards ease-out;
+
+.task-slideOut {
+  //animation: 0.3s fixedPoint-slideOut forwards ease-out;
   -webkit-animation: 0.3s slideOut forwards ease-out;
 }
 
-
+.task-btn-record {
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  > a {
+    margin: auto;
+    height: 3rem;
+    line-height: 3rem;
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 60%;
+    text-align: center;
+    border-radius: 4px;
+  }
+}
 
 /*--------------------------
   $ task-btn
@@ -134,123 +156,120 @@
 }
 
 .task-icon-write,
-.task-icon-speak{
+.task-icon-speak {
   //outline: 1px dashed blue;
   @extend .iconfont;
   font-size: 2rem;
   margin-right: 0.5rem;
 }
 
-.task-icon-write{
+.task-icon-write {
   @extend .icon-write;
 }
 
-.task-icon-speak{
+.task-icon-speak {
   @extend .icon-huatong-hollow;
 }
 
-/*
+/*--------------------------
+  $ mask
+--------------------------*/
 
-// 顶层
-.container {
-  position: relative;
-  max-width: 640px;
-  min-height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  background-color: #e5e5e5;
-}
-
-.section {
-  background-color: #fff;
-  margin-bottom: 10px;
-
-  > .item {
-    position: relative;
-    display: block;
-    width: 100%;
-    margin-left: 12px;
-    height: 40px;
-    line-height: 40px;
-    @include lenovo-tablet{
-      height: 50px;
-      line-height: 50px;
-    }
-
-
-    vertical-align: middle;
-    // is- 状态类
-    /!*&.is-compact {
-      //display: inline-block;
-      //width: auto;
-      //width: 100px;
-    }*!/
-    &.is-center {
-      text-align: center;
-      padding: 0;
-      margin: 0 auto;
-    }
-    &.with-border-dark {
-      border-width: 0 0 1px;
-      -webkit-border-image: url(../imgs/border_dark.gif) 2 stretch;
-    }
-  }
-  > textarea.item {
-    display: block;
-    width: 100%;
-    height: 100px;
-    margin: 0;
-    padding: 5px;
-    line-height: 20px;
-    border: none;
+.mask {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  &.task-record-mode {
+    top: 15rem;
+    bottom: 4rem;
   }
 }
 
-.item-title {
-  width: 100px;
-  color: #111111;
+/*--------------------------
+  $ task-list
+--------------------------*/
+// ul
+.task-list {
+  > li {
+    //background-color: #299982;
+    margin-left: 1rem;
+    border-width: 0 0 1px;
+    -webkit-border-image: url(../imgs/border_dark.gif) 2 stretch;
+    &:last-child{
+      -webkit-border-image: none;
+    }
+    > a {
+      padding-left: 1rem;
+      height: 3.5rem;
+      line-height: 3.5rem;
+      color: #161616;
+      position: relative;
+      //outline: 1px dashed red;
+      display: -webkit-box;
+    }
+  }
 }
 
-.item-value {
+.task-list-label{
+  display: inline-block;
+  width: auto;
+}
+
+.task-list-value{
+  color: #a3a3a3;
+  text-align: right;
+  -webkit-box-flex: 1;
   //outline: 1px dashed blue;
-  position: absolute;
-  right: 40px;
-  top: 0;
-  > .item-badge {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-    height: 20px;
-    width: 20px;
-    line-height: 20px;
-    border-radius: 10px;
-    text-align: center;
-    vertical-align: middle;
-    color: #fff;
-    background-color: #06bf04;
-    // 上下 auto 用于居中
-    margin: auto 0 auto 2px;
-  }
 }
 
-.item-trigger {
+.task-list-arrow{
+  color: #a3a3a3;
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
   @extend .iconfont;
   @extend .icon-arrow-1;
-  font-size: 16px;
-  position: absolute;
-  right: 20px;
+  //outline: 1px dashed green;
 }
 
-// 通用性质，暗示为 item 内部元素
-.item-inner{
-  vertical-align: middle;
-}
-
-.record-ready {
+/*--------------------------
+  $ 上传图片
+--------------------------*/
+.task-upload-photo{
   @extend .iconfont;
-  @extend .icon-huatong1;
-  font-size: 30px;
-}*/
+  @extend .icon-photo;
+  display: inline-block;
+  font-size: 4rem;
+  height: 6rem;
+  width: 6rem;
+  line-height: 6rem;
+  text-align: center;
+  margin-left: 1.5rem;
+  color: #aaa;
+  border: 1px solid #aaa;
+  border-radius: 0.5rem;
+}
+
+
+
+/*--------------------------
+  $ 创建按钮
+--------------------------*/
+.task-btn-create{
+  margin: 1rem 1.5rem 0;
+  > a{
+    display: block;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: #06bf04;
+    border: 1px solid #1fa01d;
+    border-radius: 4px;
+    text-align: center;
+    padding: 1rem 0;
+  }
+}
+
+
+
 
 
 

@@ -17,6 +17,7 @@
 
 // 上下边界根据已知设备来扩充
 $lenovo-tablet: "screen and (min-width: 600px) and (max-width: 600px)";
+$phone-mi4: "screen and (min-width: 360px) and (max-width: 360px)";
 
 
 /*--------------------------
@@ -34,7 +35,11 @@ html {
   }
 }
 
-
+@media #{$phone-mi4} {
+  html {
+    font-size: 11px;
+  }
+}
 
 
 

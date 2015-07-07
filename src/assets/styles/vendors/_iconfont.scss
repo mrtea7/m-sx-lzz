@@ -22,6 +22,8 @@ $iconfont-fonts-path: '../fonts/iconfont/';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-biaoqian:before { content: "\e608"; }
+.icon-tupian:before { content: "\e609"; }
 .icon-huatong-solid:before { content: "\e601"; }
 .icon-arrow-1:before { content: "\e605"; }
 .icon-write:before { content: "\e600"; }

@@ -1,5 +1,6 @@
 @charset "utf-8";
 /*
+  变量
   task-body
   task-btn
   mask
@@ -8,6 +9,12 @@
   创建按钮
   copyright
 */
+
+
+$title-color: #161616;
+$directive-color: #a3a3a3;
+
+$doneBgColor: #06bf04;
 
 /*--------------------------
   $ task-body
@@ -109,7 +116,7 @@
   text-align: center;
   margin: 0 3rem; // 仿 iwork 设计稿，来往两边推
   color: #fff;
-  background-color: #06bf04;
+  background-color: $doneBgColor;
   font-weight: 700;
   //outline: 1px dashed #06bf04;
 }
@@ -204,7 +211,7 @@
       padding-left: 1rem;
       height: 3.5rem;
       line-height: 3.5rem;
-      color: #161616;
+      color: $title-color;
       position: relative;
       //outline: 1px dashed red;
       display: -webkit-box;
@@ -218,14 +225,14 @@
 }
 
 .task-list-value {
-  color: #a3a3a3;
+  color: $directive-color;
   text-align: right;
   -webkit-box-flex: 1;
   //outline: 1px dashed blue;
 }
 
 .task-list-arrow {
-  color: #a3a3a3;
+  color: $directive-color;
   font-size: 1.5rem;
   margin: 0 0.5rem;
   @extend .iconfont;
@@ -260,7 +267,7 @@
     display: block;
     font-size: 1.5rem;
     color: #fff;
-    background-color: #06bf04;
+    background-color: $doneBgColor;
     border: 1px solid #1fa01d;
     border-radius: 4px;
     text-align: center;
@@ -279,10 +286,98 @@ footer > .copyright {
     display: block;
     padding: 2rem 0;
     text-align: center;
-    color: #a3a3a3;
+    color: $directive-color;
     font-size: 1rem;
   }
 }
+
+
+/*--------------------------
+  $ task-card
+  高度由子元素撑起
+  仅仅根元素具有点击事件，子元素不具有单独的事件
+--------------------------*/
+.task-card{
+  position: relative;
+  background-color: #fff;
+  margin: 1rem;
+  border-radius: 4px;
+  // box-shadow 的选值与响应式设计
+  box-shadow:1px 1px 2px #ccc;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+.task-card-header{
+  color: $title-color;
+  padding: 0 1rem;
+  height: 4rem;
+  line-height: 4rem;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-align: center;
+}
+
+.task-card-title{
+  -webkit-box-flex: 1;
+  //outline: 1px dashed blue;
+}
+
+.task-card-state{
+  margin: 0 1rem;
+  padding: 0 1rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #ff303b;
+  border-radius: 10px;
+  //outline: 1px dashed green;
+  &.done{
+    background-color: $doneBgColor;
+  }
+  &.doing{
+    background-color: #0066bb;
+  }
+}
+
+.task-card-directive{
+  @extend .iconfont;
+  @extend .icon-arrow-1;
+  // 调整 iconfont
+  color: $directive-color;
+  //outline: 1px dashed orange;
+  margin-right: -0.5rem; // 原则：父元素通用，子元素定制
+}
+
+
+.task-card-body{
+  padding: 1rem;
+  position: relative;
+  font-size: 1.2rem;
+  display: -webkit-box;
+}
+
+.task-card-photo{
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+  outline: 1px dashed orange;
+}
+
+.task-card-abstract{
+  -webkit-box-flex: 1;
+  //outline: 1px dashed blue;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: justify;
+  -webkit-box-align: start;
+}
+
+
 
 
 

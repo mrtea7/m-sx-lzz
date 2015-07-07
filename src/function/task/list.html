@@ -8,8 +8,9 @@
   <title>案件列表</title>
   <link rel="stylesheet" href="../../assets/styles/main.css"/>
 </head>
-<body onselectstart="return true;" ondragstart="return false;" style="overflow: hidden;">
-<div id="ptr">
+<!--style="overflow: hidden;"-->
+<body onselectstart="return true;" ondragstart="return false;" >
+<!--<div id="ptr">
   <span class="genericon genericon-next"></span>
 
   <div class="loading">
@@ -17,7 +18,7 @@
     <span id="l2"></span>
     <span id="l3"></span>
   </div>
-</div>
+</div>-->
 <div id="content" class="l-container">
   <div class="task-card">
     <header class="task-card-header">
@@ -102,9 +103,11 @@
 <!--<script src="../../assets/lib/hook/hook.min.js"></script>-->
 
 <script src="../../assets/components/polyfills/promise-7.0.1.min.js"></script>
-<script src="../../assets/components/hammer.2.0.4.js"></script>
-<script src="../../assets/components/wptr.1.1.js"></script>
 
+<!--<script src="../../assets/components/hammer.2.0.4.js"></script>-->
+<!--<script src="../../assets/components/wptr.1.1.js"></script>-->
+
+<!--
 <script>
   window.onload = function () {
     WebPullToRefresh.init({
@@ -117,7 +120,6 @@
   var exampleLoadingFunction = function () {
     return new Promise(function (resolve, reject) {
       // Run some async loading code here
-      console.log('promise');
       /* if the loading worked */
       if (true ) {
         resolve();
@@ -126,7 +128,7 @@
       }
     });
   };
-</script>
+</script>-->
 
 <script src="task.list.js"></script>
 </html>

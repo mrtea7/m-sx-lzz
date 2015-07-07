@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>任务发布</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <meta content="telephone=no, address=no" name="format-detection">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no"
+        name="viewport">
+  <link rel="stylesheet" href="../../assets/styles/main.css"/>
+  <!--<link href="../../assets/lib/mobiscroll/css/mobiscroll.frame.ios.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.icons.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.frame.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.frame.android.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.frame.android-holo.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.frame.ios.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.scroller.android.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.scroller.android-holo.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.image.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css"/>
+  <link href="../../assets/lib/mobiscroll/css/mobiscroll.mobiscroll-dark.css" rel="stylesheet" type="text/css"/>-->
+</head>
+<!--todo: 搞明白 body 上的属性-->
+<body onselectstart="return true;" ondragstart="return false;" style="overflow: hidden;">
+
+<!--wxconfig-->
+<!--<input type="text" id="url" value="http://weixin.zssglglj.com:8088/function/fbjs/fb/fb.html" style="display: none"/>-->
+
+<div class="l-container">
+  <section data-role="body" class="body">
+    <div class="l-section">
+      <div class="task-body">
+        <div class="task-body-text ">
+          <textarea name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
+        </div>
+        <div class="task-body-audio hide">
+          <div class="task-body-audio-ctrl">
+            <div class="task-icon-remake"></div>
+            <div class="task-icon_text">重录</div>
+          </div>
+          <div class="task-body-audio-time">1"</div>
+          <div class="task-body-audio-ctrl ">
+            <div class="task-icon-listen"></div>
+            <div class="task-icon_text">试听</div>
+          </div>
+        </div>
+      </div>
+      <footer class="task-btn">
+        <div class="js-task-btn-text "><i class="task-icon-speak"></i>我要说话</div>
+        <div class="js-task-btn-audio hide"><i class="task-icon-write"></i>切换到文字发布</div>
+      </footer>
+    </div>
+
+    <div class="l-section">
+      <ul class="task-list">
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">任务类型</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">发送对象</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">抄送</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+      </ul>
+    </div>
+
+    <div class="l-section">
+      <ul class="task-list">
+
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">截止时间</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+        <li><a href="javascript:void(0);">
+          <div class="task-list-label">地点</div>
+          <div class="task-list-value">未选择</div>
+          <div class="task-list-arrow"></div></a></li>
+      </ul>
+    </div>
+
+    <!--<div class="l-section">-->
+    <div class="task-upload-photo"></div>
+    <!--</div>-->
+
+    <div class="task-btn-create">
+      <a id="save" href="javascript:void(0);">创建</a>
+    </div>
+  </section>
+  <footer data-role="footer">
+    <div  class="copyright">
+      <a href="javascript:void(0);" >&copy;弘云信息技术支持</a>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+  <!--<footer class="l-footer task-btn-record">
+    <a href="javascript:void(0);">按住录音</a>
+  </footer>-->
+  <!--<div class="mask task-record-mode"></div>-->
+
+
+
+
+  <!--<section class="section">
+    <div class="item  is-center">
+      <i class="record-ready item-inner"></i>
+      <span class="item-inner">我要说话</span></div>
+  </section>-->
+
+  <!--<section class="section">
+    <div class="item with-border-dark ">
+      <span class="item-title">案件类型</span>
+
+      <div class="item-value">监察路长、责任路长单位
+        <div class="item-badge">5</div>
+      </div>
+      <i class="item-trigger"></i>
+    </div>
+    <div class="item with-border-dark">
+      <span class="item-title">发布对象</span>
+
+      <div class="item-value">未选择
+      </div>
+      <i class="item-trigger"></i>
+    </div>
+    <div class="item">
+      <span class="item-title">抄送</span>
+
+      <div class="item-value">未选择
+      </div>
+      <i class="item-trigger"></i>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="item">
+      <span class="item-title">截止时间</span>
+
+      <div class="item-value">未选择
+      </div>
+      <i class="item-trigger"></i>
+    </div>
+  </section>
+  -->
+</div>
+
+
+<script src="http://192.168.0.109:8080/target/target-script-min.js#anonymous"></script>
+<script src="../../assets/lib/zepto/zepto.min.js"></script>
+<script src="../../assets/components/zepto.touch.js"></script>
+<!--
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.zepto.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.core.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.scroller.js"></script>
+
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.util.datetime.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.datetimebase.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.datetime.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.select.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.listbase.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.image.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.treelist.js"></script>-->
+
+<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.android.js"></script>-->
+<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.android-holo.js"></script>-->
+<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.ios-classic.js"></script>-->
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.ios.js"></script>
+<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.jqm.js"></script>-->
+<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.sense-ui.js"></script>-->
+<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.wp.js"></script>-->
+<!--
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.android-holo-light.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.wp-light.js"></script>
+<script src="../../assets/lib/mobiscroll/js/mobiscroll.mobiscroll-dark.js"></script>-->
+
+<script src="../../assets/lib/mobiscroll/js/i18n/mobiscroll.i18n.zh.js"></script>
+
+<script src="task.issue.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

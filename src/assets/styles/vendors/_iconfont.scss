@@ -5,7 +5,8 @@ $iconfont-fonts-path: '../fonts/iconfont/';
 
 
 
-@font-face {font-family: "iconfont";
+@font-face {
+  font-family: "iconfont";
   //src: url($iconfont-fonts-path + 'iconfont.eot'); /* IE9*/
   //src: url($iconfont-fonts-path + 'iconfont.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
   //src: url($iconfont-fonts-path + 'iconfont.woff') format('woff'); /* chrome、firefox */

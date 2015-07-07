@@ -304,9 +304,9 @@ footer > .copyright {
   border-radius: 4px;
   // box-shadow 的选值与响应式设计
   box-shadow:1px 1px 2px #ccc;
-  &:last-child{
+  /*&:last-child{
     margin-bottom: 0;
-  }
+  }*/
 }
 
 .task-card-header{

@@ -1,6 +1,7 @@
 /*
   目录：
   task-body
+  save
 */
 
 
@@ -49,3 +50,7 @@ function _toggleAudioBody(bool){
 }
 
 
+$('#save').tap(function(){
+    window.location = 'list.html';
+
+})

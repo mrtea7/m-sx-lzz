@@ -365,7 +365,11 @@ footer > .copyright {
   width: 5rem;
   height: 5rem;
   margin-right: 1rem;
-  outline: 1px dashed orange;
+  //outline: 1px dashed orange;
+  > img {
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 .task-card-abstract{

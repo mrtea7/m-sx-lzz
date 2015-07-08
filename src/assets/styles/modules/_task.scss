@@ -8,6 +8,7 @@
   上传图片
   创建按钮
   copyright
+  task-detail
 */
 
 
@@ -399,10 +400,82 @@ footer > .copyright {
 }
 
 
+/*--------------------------
+  $ task-detail
+--------------------------*/
+// ul
+.task-detail-issue-list{
+  line-height: 2rem;
+  padding: 0 1rem;
+  color: #a3a3a3;
+  background-color: #fff;
+  font-size: 1.1rem;
+  > li{
+    padding: 1rem 0;
+  }
+}
 
+.task-detail-issue-title{
+  color: $title-color;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+}
 
+.task-detail-issue-body{
+  text-indent:2em;
+  font-size: 1.3rem;
+}
 
+.task-detail-issue-photo{
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+  //outline: 1px dashed orange;
+  > img {
+    width: 5rem;
+    height: 5rem;
+  }
+}
 
+.task-detail-divider{
+  color: $title-color;
+  padding: 1rem 0 1rem 1rem;
 
+}
 
+.task-detail-deal-list{
+  padding: 1rem;
+  color: #a3a3a3;
+  background-color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
 
+.task-detail-deal-title{
+  color: $title-color;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.task-detail-deal-desc{
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.task-detail-deal-photo{
+  margin-top: 1rem;
+  > img {
+    margin-right: 1rem;
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.task-issue-delete{
+  @extend .iconfont;
+  @extend .icon-lajitong;
+  position: absolute;
+  color: red;
+  right: 1rem;
+}

@@ -9,6 +9,8 @@
   <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no"
         name="viewport">
   <link rel="stylesheet" href="../../assets/styles/main.css"/>
+  <link rel="stylesheet" href="../../assets/lib/switchery/dist/switchery.css"/>
+  <!--<script src="dist/switchery.js"></script>-->
 </head>
 <!--todo: 搞明白 body 上的属性-->
 <body onselectstart="return true;" ondragstart="return false;" style="overflow: hidden;">
@@ -29,22 +31,27 @@
         <div>地点：浙江省绍兴市绍三线</div>
         <div>到期时间：2015-0-7-09 16:00</div>
         <div >任务由 李超 于 2015-07-07 11:07:27 创建 </div>
-
       </div>
     </li>
   </ul>
-  <!--<div>现场确认</div>-->
 
-  <footer>
-    <div><a href="javascript:void(0);">填写结果</a></div>
-  </footer>
+  <div class="task-deal-panel" style="margin-top: 1rem;">
+    <label for="confirm">现场确认</label>
+    <div class="task-deal-switch"><input id="confirm" type="checkbox" class="js-switch "/></div>
+  </div>
+
+  <div class="task-btn-footer fixed">
+    <a id="deal-result" href="javascript:void(0);">填写结果</a>
+  </div>
 
 </div>
+
 
 
 <script src="http://192.168.0.109:8080/target/target-script-min.js#anonymous"></script>
 <script src="../../assets/lib/zepto/zepto.min.js"></script>
 <script src="../../assets/components/zepto.touch.js"></script>
+<script src="../../assets/lib/switchery/dist/switchery.js"></script>
 <script src="task.deal.js"></script>
 </body>
 </html>

@@ -267,7 +267,8 @@ $doneBgColor: #06bf04;
 /*--------------------------
   $ 创建按钮
 --------------------------*/
-.task-btn-create {
+.task-btn-footer {
+
   margin: 1rem 1.5rem 6rem;
   > a {
     display: block;
@@ -277,7 +278,14 @@ $doneBgColor: #06bf04;
     border: 1px solid #1fa01d;
     border-radius: 4px;
     text-align: center;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
+  }
+  &.fixed{
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0rem;
+    margin: 0 0 2rem 0;
   }
 }
 
@@ -479,3 +487,23 @@ footer > .copyright {
   color: red;
   right: 1rem;
 }
+
+/*--------------------------
+  $ task-deal
+--------------------------*/
+.task-deal-panel{
+  padding: 0.8rem;
+  background-color: #fff;
+  display: -webkit-box;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+  font-size: 1.4rem;
+}
+/*
+
+.task-deal-switch{
+  outline: 1px solid orange;
+}
+
+*/
+

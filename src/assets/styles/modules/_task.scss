@@ -134,22 +134,6 @@ $doneBgColor: #06bf04;
   -webkit-animation: 0.3s slideOut forwards ease-out;
 }
 
-.task-btn-record {
-  height: 4rem;
-  line-height: 4rem;
-  text-align: center;
-  > a {
-    margin: auto;
-    height: 3rem;
-    line-height: 3rem;
-    display: inline-block;
-    border: 1px solid #ccc;
-    width: 60%;
-    text-align: center;
-    border-radius: 4px;
-  }
-}
-
 /*--------------------------
   $ task-btn
 --------------------------*/
@@ -181,6 +165,28 @@ $doneBgColor: #06bf04;
   @extend .icon-huatong-hollow;
 }
 
+
+.task-btn-record {
+  position: absolute;
+  bottom: 0;
+  outline: 1px dashed orange;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  > a {
+    margin: auto;
+    height: 3rem;
+    line-height: 3rem;
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 60%;
+    text-align: center;
+    border-radius: 4px;
+  }
+}
+
+
+
 /*--------------------------
   $ mask
 --------------------------*/
@@ -190,6 +196,8 @@ $doneBgColor: #06bf04;
   z-index: 1000;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
   &.task-record-mask {
     top: 15rem;
     bottom: 4rem;
@@ -268,8 +276,7 @@ $doneBgColor: #06bf04;
   $ 创建按钮
 --------------------------*/
 .task-btn-footer {
-
-  margin: 1rem 1.5rem 6rem;
+  margin: 1rem 1.5rem 0rem;
   > a {
     display: block;
     font-size: 1.5rem;

@@ -60,15 +60,18 @@
         <li><a href="javascript:void(0);">
           <div class="task-list-label">任务类型</div>
           <div class="task-list-value">未选择</div>
-          <div class="task-list-arrow"></div></a></li>
+          <div class="task-list-arrow"></div>
+        </a></li>
         <li><a href="javascript:void(0);">
           <div class="task-list-label">发送对象</div>
           <div class="task-list-value">未选择</div>
-          <div class="task-list-arrow"></div></a></li>
+          <div class="task-list-arrow"></div>
+        </a></li>
         <li><a href="javascript:void(0);">
           <div class="task-list-label">抄送</div>
           <div class="task-list-value">未选择</div>
-          <div class="task-list-arrow"></div></a></li>
+          <div class="task-list-arrow"></div>
+        </a></li>
       </ul>
     </div>
 
@@ -78,11 +81,13 @@
         <li><a href="javascript:void(0);">
           <div class="task-list-label">截止时间</div>
           <div class="task-list-value">未选择</div>
-          <div class="task-list-arrow"></div></a></li>
+          <div class="task-list-arrow"></div>
+        </a></li>
         <li><a href="javascript:void(0);">
           <div class="task-list-label">地点</div>
           <div class="task-list-value">未选择</div>
-          <div class="task-list-arrow"></div></a></li>
+          <div class="task-list-arrow"></div>
+        </a></li>
       </ul>
     </div>
 
@@ -91,29 +96,27 @@
     <!--</div>-->
 
     <div class="task-btn-footer">
-      <a id="save" href="javascript:void(0);">创建</a>
+      <a id="issue" href="javascript:void(0);">创111建</a>
     </div>
   </section>
   <footer data-role="footer">
-    <div  class="copyright">
-      <a href="javascript:void(0);" >&copy;弘云信息技术支持</a>
+    <div class="copyright">
+      <a href="javascript:void(0);">&copy;弘云信息技术支持</a>
     </div>
   </footer>
 
+  <footer id="task-record-footer" class="js-task-record-mask l-footer task-btn-record hide">
+    <a href="javascript:void(0);" id="task-record">按住录音</a>
+  </footer>
+  <div id="task-record-mask" class="js-task-record-mask mask task-record-mask hide"></div>
+</div>
+
+  <!--
 
 
 
 
-
-
-
-
-  <!--<footer class="l-footer task-btn-record">
-    <a href="javascript:void(0);">按住录音</a>
-  </footer>-->
-  <!--<div class="mask task-record-mode"></div>-->
-
-
+  -->
 
 
   <!--<section class="section">
@@ -157,44 +160,12 @@
     </div>
   </section>
   -->
-</div>
-
 
 <script src="http://192.168.0.109:8080/target/target-script-min.js#anonymous"></script>
 <script src="../../assets/lib/zepto/zepto.min.js"></script>
 <script src="../../assets/components/zepto.touch.js"></script>
-<!--
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.zepto.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.core.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.scroller.js"></script>
-
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.util.datetime.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.datetimebase.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.datetime.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.select.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.listbase.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.image.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.treelist.js"></script>-->
-
-<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.android.js"></script>-->
-<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.android-holo.js"></script>-->
-<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.ios-classic.js"></script>-->
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.ios.js"></script>
-<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.jqm.js"></script>-->
-<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.sense-ui.js"></script>-->
-<!--<script src="../../assets/lib/mobiscroll/js/mobiscroll.frame.wp.js"></script>-->
-<!--
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.android-holo-light.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.wp-light.js"></script>
-<script src="../../assets/lib/mobiscroll/js/mobiscroll.mobiscroll-dark.js"></script>-->
-
-<script src="../../assets/lib/mobiscroll/js/i18n/mobiscroll.i18n.zh.js"></script>
-
+<script src="../../assets/components/utils.js"></script>
 <script src="task.issue.js"></script>
-<script>
-
-</script>
 
 </body>
 </html>

@@ -15,6 +15,9 @@
 $('.js-task-btn-text').tap(function () {
   _toggleTextBody(false);
   _toggleAudioBody(true);
+  // 开启遮罩层
+  _toggleMask(true)
+
 });
 
 /*
@@ -23,6 +26,7 @@ $('.js-task-btn-text').tap(function () {
 $('.js-task-btn-audio').tap(function () {
   _toggleTextBody(true);
   _toggleAudioBody(false);
+  _toggleMask(false)
 });
 
 function _toggleTextBody(bool){
@@ -49,8 +53,27 @@ function _toggleAudioBody(bool){
   }
 }
 
+// 遮罩层开关
+function _toggleMask(bool){
+  if (bool) {
+    $('.js-task-record-mask').removeClass('hide');
+  }else{
+    $('.js-task-record-mask').addClass('hide');
+    $('#task-record-mask').tap(function(){
+      console.log('start');
+    })
+    g('task-record-mask').addEventListener('touchstart touchmove touchend', function(){
+      //console.log('hello');
+      //e.stopPropagation();
+      e.preventDefault();
+    })
+  }
+}
 
-$('#save').tap(function(){
-    window.location = 'list.html';
 
+
+
+$('#issue').on('touchstart', function(){
+  console.log('12323234');
+  //window.location = 'list.html';
 })

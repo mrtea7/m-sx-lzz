@@ -17,7 +17,6 @@ $('.js-task-btn-text').tap(function () {
   _toggleAudioBody(true);
   // 开启遮罩层
   _toggleMask(true)
-
 });
 
 /*
@@ -57,15 +56,19 @@ function _toggleAudioBody(bool){
 function _toggleMask(bool){
   if (bool) {
     $('.js-task-record-mask').removeClass('hide');
+    g('task-record-mask').addEventListener('touchmove', function(e){
+      e.stopPropagation();
+      e.preventDefault();
+    })
+    $('#task-record-footer').on('touchmove', function(e){
+      e.stopPropagation();
+      e.preventDefault();
+    })
+
   }else{
     $('.js-task-record-mask').addClass('hide');
     $('#task-record-mask').tap(function(){
       console.log('start');
-    })
-    g('task-record-mask').addEventListener('touchstart touchmove touchend', function(){
-      //console.log('hello');
-      //e.stopPropagation();
-      e.preventDefault();
     })
   }
 }
@@ -74,6 +77,6 @@ function _toggleMask(bool){
 
 
 $('#issue').on('touchstart', function(){
-  console.log('12323234');
+  console.log('');
   //window.location = 'list.html';
 })

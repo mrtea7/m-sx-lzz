@@ -169,10 +169,14 @@ $doneBgColor: #06bf04;
 .task-btn-record {
   position: absolute;
   bottom: 0;
-  outline: 1px dashed orange;
   height: 4rem;
   line-height: 4rem;
   text-align: center;
+
+  &.over-mask{
+    z-index: 1000;
+  }
+
   > a {
     margin: auto;
     height: 3rem;
@@ -193,14 +197,14 @@ $doneBgColor: #06bf04;
 
 .mask {
   position: fixed;
-  z-index: 1000;
+  z-index: 100;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-user-drag: none;
   -webkit-user-select: none;
   &.task-record-mask {
     top: 15rem;
-    bottom: 4rem;
+    bottom: 0rem;
   }
   /*&.task-card-mask {
     top: 15rem;

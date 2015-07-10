@@ -165,7 +165,7 @@
 .section_div.task_des .task_btn .text_btn > span:first-child{
     width: 30px;
     height: 30px;
-    background: url(../imgs/2.png?v=20150403) no-repeat 0 -390px;
+    background: url(../imgs/2.png) no-repeat 0 -390px;
     background-size: 30px auto;
 }
 .section_div.task_des .task_btn .text_btn > span:last-child{
@@ -174,7 +174,7 @@
 .section_div.task_des .task_btn .audio_btn > span:first-child{
     width: 30px;
     height: 30px;
-    background: url(../imgs/2.png?v=20150403) no-repeat 0 -360px;
+    background: url(../imgs/2.png) no-repeat 0 -360px;
     background-size: 30px auto;
 }
 .section_div.task_des .task_btn .audio_btn > span:last-child{

@@ -25,8 +25,8 @@
 <link href="css/mobiscroll.min.css" rel="stylesheet" />
 <link href="css/calendar.css" rel="stylesheet" />
 <link href="css/audio.css" rel="stylesheet" />
-<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
-<!--<script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
     //config
     var APP = {
         page:"addTask",
@@ -34,7 +34,7 @@
         urls:{
             saveAudio:'/task/manager/CacheAudio'
         },
-        localId: null, //用于保存录音ID
+        localId: null //用于保存录音ID
         //already_remind: false //判断是否是从选完负责人/协作人/抄送人之后跳回来的
     };
     wx.config({
@@ -45,7 +45,7 @@
         signature: '6b24ced6be14dec3de70ad278beab55e5af2eeac',// 必填，签名，见附录1
         jsApiList: ['startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice','stopVoice','onVoicePlayEnd','uploadVoice','downloadVoice'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
-</script>-->
+</script>
 
 <script src="js/mobiscroll.min.js"></script>
 <script src="js/audioPlayer.js" ></script>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="audio_task_des ">
                     <div>
-                        <div class="audio_task_ctrl record ">
+                        <div class="audio_task_ctrl record">
                             <div></div>
                             <div>重录</div>
                         </div>

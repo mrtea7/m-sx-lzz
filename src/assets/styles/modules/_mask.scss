@@ -12,6 +12,7 @@
 
 // 基类
 .mask{
+  // fixed 也能阻止 touchmove
   position: fixed;
   width: 100%;
   -webkit-user-drag: none;

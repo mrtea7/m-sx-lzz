@@ -95,28 +95,6 @@
 }
 
 
-.task-btn-record {
-  position: absolute;
-  bottom: 0;
-  height: 4rem;
-  line-height: 4rem;
-  text-align: center;
-
-  &.over-mask{
-    z-index: 1000;
-  }
-
-  > a {
-    margin: auto;
-    height: 3rem;
-    line-height: 3rem;
-    display: inline-block;
-    border: 1px solid #ccc;
-    width: 60%;
-    text-align: center;
-    border-radius: 4px;
-  }
-}
 
 
 

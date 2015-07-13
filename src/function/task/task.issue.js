@@ -1,120 +1,113 @@
 /*
-  目录：
+ 目录：
+ 页内全局变量
+ 切换文字/录音模式
+ 录音功能
 */
 
 /*--------------------------
   $ 页内全局变量
-  be careful 要设置清晰的锚点
 --------------------------*/
+// 集中管理变量
+var record = $('#record');
+var mask = $('#mask');
+var recordFooter = $('#record-footer');
+var recordFooterHeight = recordFooter[0].clientHeight;
+var indicator ; // dynamic
 
+// Hammer Setup
+var recordGesture = Hammer(record[0], {});
+var bodyGesture = Hammer(document.documentElement, {});
+var bodyH = document.documentElement.clientHeight;
+
+//var maskOffsetTop = mask[0].offsetTop;
+//var maskClientHeight = mask[0].clientHeight;
+//var maskBottomSideY = maskOffsetTop + maskClientHeight;
+
+// 定义控制变量
+var isRecordCanel = false;
+var isRecordStart = false;
 
 
 /*--------------------------
   $ 切换文字/录音模式
 --------------------------*/
 // 功能：切换为音频输入
-$('#audio-mode').tap(function () {
+$('#audio-mode').on('touchstart', function () {
   _switchTextMode(false);
   _switchAudioMode(true);
 });
 
 // 功能：切换为文本输入
-$('#text-mode').tap(function () {
-  _switchTextMode(true);
+$('#text-mode').on('touchstart', function () {
   _switchAudioMode(false);
+  setTimeout(function(){_switchTextMode(true);},300) // 等待动画执行完毕
 });
 
 /*--------------------------
   $ 录音功能
 --------------------------*/
-var record = $('#record')[0];
-var mask = $('#mask')[0];
-record.addEventListener('touchmove', function (e) {
-  e.preventDefault();
-})
-
-mask.addEventListener('touchmove', function (e) {
-  e.preventDefault();
-})
-
-// Hammer Setup
-var recordGesture = Hammer(record, {});
-var bodyGesture = Hammer(document.documentElement, {});
-//  var bodyH = document.documentElement.clientHeight;
-
-var maskOffsetTop = mask.offsetTop;
-var maskClientHeight = mask.clientHeight;
-var maskBottomSideY = maskOffsetTop + maskClientHeight;
-
-// 定义控制变量
-var isRecordCanel = false;
-var isRecordStart = false;
-
 // 按住录音
 recordGesture.on('press', function (e) {
   isRecordStart = true;
-  var indicator = $('record-indicator');
+  mask.css({'top':'0','bottom':'0'});
+  indicator = $('#record-indicator');
   if (indicator.length == 0) {
-    $('#mask').append('<div id="record-indicator" class="record-indicator">');
-    console.log($('#record-mask').length);
+    mask.append('<div id="record-indicator" class="record-indicator">');
   } else {
     indicator.show();
-    indicator.css('backgroundPosition', '0px 0px')
-    //indicator[0].style.backgroundPosition = '0px 0px';
+    indicator.css('background-position', '0px 0px')
   }
-  console.log('press');
 })
-
+// 上滑取消录音
 bodyGesture.on('panup', function (e) {
   if (isRecordStart) {
     // 指定下移到特定的区域才更改状态
     var touchY = e.pointers[0].pageY;
-    if (maskBottomSideY - touchY > maskClientHeight) {
-      _closeRecordMask();
-      isRecordCanel = true;
-    }
-
-    if (maskBottomSideY - touchY >= 100) {
-      $('#record-mask')[0].style.backgroundPosition = '0px -152px';
+    if (bodyH - touchY >= 2 * recordFooterHeight ) {
+      indicator.css('background-position', '0px -152px')
       isRecordCanel = true;
     }
   }
-}).on('pandown', function (e) {
+})
+// 下滑继续录音
+bodyGesture.on('pandown', function (e) {
   if (isRecordStart) {
     // 指定下移到特定的区域才更改状态
     var touchY = e.pointers[0].pageY;
-    if (maskBottomSideY - touchY < 100) {
-      $('#record-mask')[0].style.backgroundPosition = '0px 0px';
+    if (bodyH - touchY < 2 * recordFooterHeight) {
+      indicator.css('background-position', '0px 0px')
       isRecordCanel = false;
     }
   }
-}).on('panend', function (e) {
+})
+// 停止录音（经过平移）
+bodyGesture.on('panend', function (e) {
   if (isRecordStart) {
     console.log('isRecordCanel = ', isRecordCanel);
-    _closeRecordMask();
-
+    _closeRecord();
   }
-}).on('pressup', function (e) {
+})
+// 停止录音（未平移过）
+bodyGesture.on('pressup', function (e) {
   console.log('pressup');
-  _closeRecordMask();
+  _closeRecord();
 })
 
-function _closeRecordMask(){
-  if (isRecordStart) {
-    $('#record-mask').hide();
-    isRecordStart = false;
-  }
-}
+
+/*--------------------------
+ $ 重录
+ --------------------------*/
+$('#remake').on('touchstart', function(){
+  console.log('11');
+  _switchMask(true)
+})
 
 
 /*--------------------------
   $ 播放录音
 --------------------------*/
 
-
-/*--------------------------
-  $ 重录
---------------------------*/
 
 
 /*--------------------------
@@ -141,52 +134,56 @@ function _closeRecordMask(){
 /*--------------------------
   $ 辅助内部函数
 --------------------------*/
-
 function _switchTextMode(bool){
+  var mode = $('#audio-mode');
+  var body = $('#text-body');
   if (bool) {
-    $('#text-mode').removeClass('hide');
-    $('.task-body-text').removeClass('hide');
+    mode.removeClass('hide');
+    body.removeClass('hide');
   }else{
-    $('#text-mode').addClass('hide');
-    $('.task-body-text').addClass('hide');
+    mode.addClass('hide');
+    body.addClass('hide');
   }
 }
 
 function _switchAudioMode(bool){
+  var mode = $('#text-mode');
+  var body = $('#audio-body');
   if (bool) {
-    // 显示
-    $('#audio-mode').removeClass('hide');
-    $('.task-body-audio').removeClass('hide task-slideOut').addClass('task-slideIn');
+    mode.removeClass('hide');
+    body.removeClass('hide task-slideOut').addClass('task-slideIn');
   }else{
-    // 隐藏
-    $('#audio-mode').addClass('hide');
-    $('.task-body-audio').removeClass('task-slideIn').addClass('task-slideOut');
+    mode.addClass('hide');
+    body.removeClass('task-slideIn').addClass('task-slideOut');
   }
-  _toggleMask(bool);
+  _switchMask(bool);
 }
 
 // 遮罩层开关
-function _toggleMask(bool){
+function _switchMask(bool){
+  console.log('hello');
   if (bool) {
-    $('.js-task-record-mask').removeClass('hide');
-    g('task-record-mask').addEventListener('touchmove', function(e){
-      e.stopPropagation();
+    recordFooter.removeClass('hide').on('touchmove', function(e){
       e.preventDefault();
     })
-    $('#task-record-footer').on('touchmove', function(e){
-      e.stopPropagation();
+    // 起到重置的效果
+    mask.css({'top':'15rem','bottom':'0'}).on('touchmove', function(e){
       e.preventDefault();
-    })
-
+    }).removeClass('hide')
   }else{
-    $('.js-task-record-mask').addClass('hide');
-    $('#task-record-mask').tap(function(){
-      console.log('start');
-    })
+    recordFooter.addClass('hide');
+    mask.addClass('hide')
   }
 }
 
-
+function _closeRecord(){
+  if (isRecordStart) {
+    mask.hide();
+    indicator.hide();
+    recordFooter.hide();
+    isRecordStart = false;
+  }
+}
 
 
 

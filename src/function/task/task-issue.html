@@ -15,18 +15,18 @@
   <section data-role="body" class="body">
     <div class="l-section">
       <div class="task-body">
-        <div id="text-body " class="hide">
+        <div id="text-body">
           <textarea class="text-textarea" name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
         </div>
-        <div id="audio-body" class="l-box-justify-center h-100p">
-          <div class="audio-ctrl">
+        <div id="audio-body" class="l-box-justify-center h-100p hide">
+          <div id="remake" class="audio-ctrl" style="outline: 1px dashed red;">
             <div class="task-icon-remake"></div>
-            <div class="task-icon_text">重录</div>
+            <div  class="task-icon_text">重录</div>
           </div>
           <div class="audio-time-panel">0"</div>
-          <div class="audio-ctrl">
+          <div id="play" class="audio-ctrl">
             <div class="task-icon-listen"></div>
-            <div class="task-icon_text">试听</div>
+            <div  class="task-icon_text">试听</div>
           </div>
         </div>
       </div>
@@ -93,20 +93,11 @@
     </div>
   </footer>
 
-  <footer id="task-record-footer" class="js-task-record-mask l-footer over-mask task-btn-record hide">
-    <a href="javascript:void(0);" id="record">按住录音</a>
+  <footer id="record-footer" class="l-footer record-footer hide">
+    <a href="javascript:void(0);" id="record" class="record-btn" >按住录音</a>
   </footer>
-  <div id="mask" class="mask hide"></div>
+  <div id="mask" class="mask hide l-box-center"></div>
 </div>
-
-  <!--
-
-
-
-
-  -->
-
-
 
   <!--<section class="section">
     <div class="item  is-center">
@@ -154,11 +145,8 @@
 <!--<script src="http://192.168.2.100:8080/target/target-script-min.js#anonymous"></script>-->
 <!--<script src="http://192.168.0.109:8080/target/target-script-min.js#anonymous"></script>-->
 <script src="../../assets/lib/zepto/zepto.min.js"></script>
-<script src="../../assets/components/zepto.touch.js"></script>
+<script src="../../assets/lib/hammerjs/hammer.min.js"></script>
 <script src="../../assets/components/utils.js"></script>
 <script src="task.issue.js"></script>
-
-
-
 </body>
 </html>

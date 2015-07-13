@@ -20,10 +20,6 @@ var recordGesture = Hammer(record[0], {});
 var bodyGesture = Hammer(document.documentElement, {});
 var bodyH = document.documentElement.clientHeight;
 
-//var maskOffsetTop = mask[0].offsetTop;
-//var maskClientHeight = mask[0].clientHeight;
-//var maskBottomSideY = maskOffsetTop + maskClientHeight;
-
 // 定义控制变量
 var isRecordValid = false;  // true 必然是有录音了
 var isRecordStart = false;

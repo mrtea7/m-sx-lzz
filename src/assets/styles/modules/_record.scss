@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.record-indicator{
+  display: block;
+  content: ' ';
+  /*outline: 1px dashed red;*/
+  height: 152px;
+  width: 152px;
+  background: url("../img/audio/record-indicator.png") no-repeat 0 0;
+  /*这个图片本身不止是 实体录音按钮，还有别的旁白部分*/
+  background-size: 200px ;
+}
+
+

@@ -16,6 +16,7 @@
 /*--------------------------
   $ task-body
 --------------------------*/
+// 关键是控制了高度
 .task-body {
   position: relative;
   width: 100%;
@@ -25,61 +26,8 @@
 }
 
 // 当前调试暂时隐藏
-.task-body-text {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  &.hide {
-    display: none;
-  }
-  > textarea {
-    display: block;
-    width: 100%;
-    height: 100%; // 100px
-    margin: 0;
-    padding: 5px;
-    line-height: 20px;
-    border: none;
-  }
-}
 
-.task-body-audio {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  display: -webkit-box;
-  -webkit-box-align: center;
-  -webkit-box-pack: justify;
-  &.hide {
-    display: none;
-  }
-}
 
-.task-body-audio-ctrl {
-  height: 100%;
-  line-height: 100%;
-  -webkit-box-flex: 1;
-  // 嵌套 flexbox
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-pack: center;
-  -webkit-box-align: baseline; // 与时间上的计数对齐
-  //outline: 1px dashed blue;
-  &::before {
-    /* 用于 flexbox 布局，content 必须有文本且为透明，用于撑高度
-       box-flex 须与 block 一起使用
-    */
-    content: 'hi';
-    color: transparent;
-    display: block;
-    -webkit-box-flex: 1;
-  }
-}
 
 .task-icon-remake,
 .task-icon-listen {
@@ -103,19 +51,6 @@
   -webkit-box-flex: 1;
   color: #ff303b;
   font-size: 1.2rem;
-}
-
-.task-body-audio-time {
-  height: 9rem;
-  line-height: 9rem;
-  width: 9rem;
-  border-radius: 4.5rem;
-  text-align: center;
-  margin: 0 3rem; // 仿 iwork 设计稿，来往两边推
-  color: #fff;
-  background-color: $doneBgColor;
-  font-weight: 700;
-  //outline: 1px dashed #06bf04;
 }
 
 // 动画切换 task-body

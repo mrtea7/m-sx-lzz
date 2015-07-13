@@ -15,24 +15,24 @@
   <section data-role="body" class="body">
     <div class="l-section">
       <div class="task-body">
-        <div class="task-body-text ">
-          <textarea name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
+        <div id="text-body " class="hide">
+          <textarea class="text-textarea" name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
         </div>
-        <div class="task-body-audio hide">
-          <div class="task-body-audio-ctrl">
+        <div id="audio-body" class="l-box-justify-center h-100p">
+          <div class="audio-ctrl">
             <div class="task-icon-remake"></div>
             <div class="task-icon_text">重录</div>
           </div>
-          <div class="task-body-audio-time">1"</div>
-          <div class="task-body-audio-ctrl ">
+          <div class="audio-time-panel">0"</div>
+          <div class="audio-ctrl">
             <div class="task-icon-listen"></div>
             <div class="task-icon_text">试听</div>
           </div>
         </div>
       </div>
-      <section class="l-box-center panel b-t">
-        <div class="js-task-btn-text "><i class="task-icon-speak"></i>我要说话</div>
-        <div class="js-task-btn-audio hide"><i class="task-icon-write"></i>切换到文字发布</div>
+      <section class="l-box-center panel-line b-t">
+        <div id="audio-mode"><i class="task-icon-speak"></i>我要说话</div>
+        <div id="text-mode" class="js-task-btn-audio hide"><i class="task-icon-write"></i>切换到文字发布</div>
       </section>
     </div>
 

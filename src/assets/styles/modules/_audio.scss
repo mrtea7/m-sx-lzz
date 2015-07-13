@@ -1,1 +1,46 @@
 @charset "utf-8";
+
+.audio-ctrl {
+  height: 100%;
+  line-height: 100%;
+  -webkit-box-flex: 1;
+  // 嵌套 flexbox
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: baseline; // 与时间上的计数对齐
+  //outline: 1px dashed blue;
+  &::before {
+    /* 用于 flexbox 布局，content 必须有文本且为透明，用于撑高度
+       box-flex 须与 block 一起使用
+    */
+    content: 'hi';
+    color: transparent;
+    display: block;
+    -webkit-box-flex: 1;
+  }
+}
+
+.audio-time-panel {
+  height: 9rem;
+  line-height: 9rem;
+  width: 9rem;
+  border-radius: 4.5rem;
+  text-align: center;
+  margin: auto 3rem; // 通过把 audio-ctrl 往两边推来调整样式
+
+  color: #fff;
+  background-color: $doneBgColor;
+  font-size: 2rem;
+  font-weight: 700;
+  //outline: 1px dashed #06bf04;
+}
+
+
+
+
+
+
+
+
+

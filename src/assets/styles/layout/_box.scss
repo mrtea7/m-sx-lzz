@@ -2,15 +2,27 @@
   $ box = flexbox 2009
 --------------------------*/
 
-
-
-.l-box-center{
+%l-box {
   display: -webkit-box;
+}
+
+%l-box-align-center {
   -webkit-box-align: center;
-  -webkit-box-pack: center;
 }
 
 
+.l-box-center{
+  @extend %l-box;
+  -webkit-box-pack: center;
+  @extend %l-box-align-center;
+}
+
+
+.l-box-justify-center{
+  @extend %l-box;
+  -webkit-box-pack: justify;
+  @extend %l-box-align-center;
+}
 
 
 

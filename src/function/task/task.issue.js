@@ -2,22 +2,26 @@
   目录：
 */
 
+/*--------------------------
+  $ 页内全局变量
+  be careful 要设置清晰的锚点
+--------------------------*/
+
+
 
 /*--------------------------
   $ 切换文字/录音模式
 --------------------------*/
 // 功能：切换为音频输入
-$('.js-task-btn-text').tap(function () {
-  _toggleTextBody(false);
-  _toggleAudioBody(true);
-  _toggleMask(true)
+$('#audio-mode').tap(function () {
+  _switchTextMode(false);
+  _switchAudioMode(true);
 });
 
 // 功能：切换为文本输入
-$('.js-task-btn-audio').tap(function () {
-  _toggleTextBody(true);
-  _toggleAudioBody(false);
-  _toggleMask(false)
+$('#text-mode').tap(function () {
+  _switchTextMode(true);
+  _switchAudioMode(false);
 });
 
 /*--------------------------
@@ -138,28 +142,27 @@ function _closeRecordMask(){
   $ 辅助内部函数
 --------------------------*/
 
-function _toggleTextBody(bool){
+function _switchTextMode(bool){
   if (bool) {
-    // 显示：显示文本/进场动画
-    $('.js-task-btn-text').removeClass('hide');
+    $('#text-mode').removeClass('hide');
     $('.task-body-text').removeClass('hide');
   }else{
-    // 隐藏
-    $('.js-task-btn-text').addClass('hide');
+    $('#text-mode').addClass('hide');
     $('.task-body-text').addClass('hide');
   }
 }
 
-function _toggleAudioBody(bool){
+function _switchAudioMode(bool){
   if (bool) {
     // 显示
-    $('.js-task-btn-audio').removeClass('hide');
+    $('#audio-mode').removeClass('hide');
     $('.task-body-audio').removeClass('hide task-slideOut').addClass('task-slideIn');
   }else{
     // 隐藏
-    $('.js-task-btn-audio').addClass('hide');
+    $('#audio-mode').addClass('hide');
     $('.task-body-audio').removeClass('task-slideIn').addClass('task-slideOut');
   }
+  _toggleMask(bool);
 }
 
 // 遮罩层开关

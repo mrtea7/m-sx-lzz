@@ -187,26 +187,7 @@
 
 
 
-/*--------------------------
-  $ mask
---------------------------*/
 
-.mask {
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  &.task-record-mask {
-    top: 15rem;
-    bottom: 0rem;
-  }
-  /*&.task-card-mask {
-    top: 15rem;
-    bottom: 4rem;
-  }*/
-}
 
 /*--------------------------
   $ 上传图片

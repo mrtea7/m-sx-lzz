@@ -82,6 +82,12 @@ $('#issue').on('touchstart', function(){
 })
 
 
+
+/*--------------------------
+  $ 录音功能
+--------------------------*/
+var record = $('#record')[0];
+var mask = $('#mask')[0];
 record.addEventListener('touchmove', function (e) {
   e.preventDefault();
 })
@@ -93,11 +99,10 @@ mask.addEventListener('touchmove', function (e) {
 /*--------------------------
  $ Hammer Setup
  --------------------------*/
-var recordGesture = Hammer($('#record')[0], {});
+var recordGesture = Hammer(record, {});
 var bodyGesture = Hammer(document.documentElement, {});
 //  var bodyH = document.documentElement.clientHeight;
 
-var mask = $('#mask')[0];
 var maskOffsetTop = mask.offsetTop;
 var maskClientHeight = mask.clientHeight;
 var maskBottomSideY = maskOffsetTop + maskClientHeight;

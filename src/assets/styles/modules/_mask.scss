@@ -1,0 +1,25 @@
+/*--------------------------
+  $ mask
+
+  模块做自身的形状，布局定位交给其他类
+
+  类的设计是简单的，把复杂情况，交给 js 控制
+
+
+--------------------------*/
+
+// 基类
+.mask{
+  position: fixed;
+  width: 100%;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+  &.mask-fullscreen{
+    top: 0;
+    bottom: 0;
+  }
+}
+
+

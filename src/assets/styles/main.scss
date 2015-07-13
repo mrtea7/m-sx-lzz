@@ -26,24 +26,30 @@
   $ vendors
 --------------------------*/
 @import "vendors/iconfont";
-@import "vendors/genericons";
-@import "vendors/wptr";
+//@import "vendors/genericons";
+//@import "vendors/wptr";
 
 /*--------------------------
   $ layout
 --------------------------*/
 @import "layout/layout";
+@import "layout/flexbox";
 
 /*--------------------------
   $ modules
 --------------------------*/
-@import "modules/task";
 @import "modules/list";
 @import "modules/error";
+@import "modules/audio";
+@import "modules/record";
+@import "modules/text";
+@import "modules/mask";
+
 
 /*--------------------------
   $ pages
 --------------------------*/
 //@import "pages/addTask";
+@import "pages/task";
 
 

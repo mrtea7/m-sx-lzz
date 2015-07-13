@@ -19,7 +19,8 @@
 
 .l-box-justify-center{
   @extend %l-box;
-  -webkit-box-pack: justify;
+  //-webkit-box-pack: justify;
+  -webkit-box-pack: center;
   @extend %l-box-align-center;
 }
 

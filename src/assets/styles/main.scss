@@ -10,6 +10,7 @@
 --------------------------*/
 @import "base/reset";
 @import "base/media";
+@import "base/theme";
 
 /*--------------------------
   $ utils
@@ -33,7 +34,7 @@
   $ layout
 --------------------------*/
 @import "layout/layout";
-@import "layout/flexbox";
+@import "layout/box";
 
 /*--------------------------
   $ modules

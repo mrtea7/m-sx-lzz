@@ -30,7 +30,7 @@
 
 
 .task-icon-remake,
-.task-icon-listen {
+.task-icon-play {
   color: #ff303b;
   display: block;
   // padding 解决伪元素溢出
@@ -40,11 +40,11 @@
 }
 
 .task-icon-remake {
-  @extend .icon-stop;
+  @extend .icon-remake;
 }
 
-.task-icon-listen {
-  @extend .icon-run;
+.task-icon-play {
+  @extend .icon-play;
 }
 
 .task-icon_text {

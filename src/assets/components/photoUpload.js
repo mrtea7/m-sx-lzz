@@ -11,8 +11,8 @@ $.fn.photoUpload = function (opts) {
         limit: 5,
         maxSize: 2048
       }, opts),
-      _this = $(this),
-      lastBtn = _this.find('li').last(),
+      $this = $(this),
+      lastBtn = $this.find('li').last(),
       template =
         '<div class="swipe">' +
         ' <div class="img-box">' +
@@ -24,7 +24,7 @@ $.fn.photoUpload = function (opts) {
       _swipe = $(template).appendTo('body'),
       mySwipe;
 
-    _this.delegate('input', 'change', function () {
+    $this.on('input', 'change', function () {
       var item = $(this).parent().clone(),
         file = this.files[0],
         _parent = $(this).parents('.upload_img');
@@ -45,9 +45,9 @@ $.fn.photoUpload = function (opts) {
       }
     });
 
-    _this.delegate('span', 'click', showImg);
+    $this.delegate('span', 'click', showImg);
 
-    _this.delegate('.del_img', 'click', function () {
+    $this.delegate('.del_img', 'click', function () {
       if (lastBtn.css('display') == 'none') lastBtn.show();
       $(this).parent().remove();
     });
@@ -71,7 +71,7 @@ $.fn.photoUpload = function (opts) {
         numHtml = '',
         iIndex = $(this).parent().index();
 
-      _this.find('span').each(function () {
+      $this.find('span').each(function () {
         if (this.className != 'file_btn') {
           htmls += '<li><div style="background-image:' + $(this).css('background-image') + '"></div></li>';
           numHtml += '<span></span>';

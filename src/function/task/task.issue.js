@@ -5,6 +5,10 @@
  录音功能
  重录/取消重录
  试听/停止录音
+ ------
+ 图片列表
+ 图片预览
+ 辅助内部函数
  */
 
 /*--------------------------
@@ -154,6 +158,36 @@ $('#play').on('touchstart', function () {
     txt.text('试听')
   }
 })
+
+
+/*--------------------------
+  $ 图片列表
+--------------------------*/
+
+
+
+
+/*--------------------------
+  $ 图片预览
+--------------------------*/
+function previewPhoto(){
+  var template =
+    '<div id="swipe" class="swipe">' +
+    ' <div class="img-box">' +
+    '   <ul></ul>' +
+    '   <div class="swipe-num"></div>' +
+    '   <a href="javascript:void(0);" class="swipe-cancel">×</a>' +
+    ' </div>' +
+    '</div>';
+  var swipe = $('#swipe');
+  if (swipe.length == 0) {
+    swipe = $(template).appendTo('body')
+  }
+}
+
+
+
+
 
 
 /*--------------------------

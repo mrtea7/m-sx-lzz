@@ -1,16 +1,4 @@
 @charset "utf-8";
-/*
-  变量
-  task-body
-  task-btn
-  mask
-  task-list
-  上传图片
-  创建按钮
-  copyright
-  task-detail
-*/
-
 
 
 /*--------------------------
@@ -24,10 +12,6 @@
   background-color: #fff;
   //outline: 1px dashed blueviolet;
 }
-
-// 当前调试暂时隐藏
-
-
 
 .task-icon-remake,
 .task-icon-cancel,
@@ -75,19 +59,6 @@
   -webkit-animation: 0.3s slideOut forwards ease-out;
 }
 
-/*--------------------------
-  $ task-btn
---------------------------*/
-/*.task-btn {
-  height: 4rem;
-  line-height: 4rem;
-  color: #9da0a5;
-  background-color: #ffffff;
-  border-top: 1px solid #e0e0e0;
-  display: -webkit-box;
-  -webkit-box-pack: center;
-}*/
-
 .task-icon-write,
 .task-icon-speak {
   //outline: 1px dashed blue;
@@ -106,33 +77,11 @@
 
 
 
-
-
-
-
-/*--------------------------
-  $ 上传图片
---------------------------*/
-.task-upload-photo {
-  @extend .iconfont;
-  @extend .icon-photo;
-  display: inline-block;
-  font-size: 4rem;
-  height: 6rem;
-  width: 6rem;
-  line-height: 6rem;
-  text-align: center;
-  margin-left: 1.5rem;
-  color: #aaa;
-  border: 1px solid #aaa;
-  border-radius: 0.5rem;
-}
-
 /*--------------------------
   $ 创建按钮
 --------------------------*/
-.task-btn-footer {
-  margin: 1rem 1.5rem 0rem;
+.task-btn-create {
+  margin: 1rem 1.5rem 1rem;
   > a {
     display: block;
     font-size: 1.5rem;
@@ -143,25 +92,19 @@
     text-align: center;
     padding: 0.8rem 0;
   }
-  &.fixed{
-    position: absolute;
-    left: 1rem;
-    right: 1rem;
-    bottom: 0rem;
-    margin: 0 0 2rem 0;
-  }
 }
 
 /*--------------------------
   $ copyright
 --------------------------*/
-footer > .copyright {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.copyright {
+  margin: 1rem auto;
+  //position: absolute;
+  //bottom: 0;
+  //width: 100%;
   > a {
     display: block;
-    padding: 2rem 0;
+    padding: 1rem 0;
     text-align: center;
     color: $indicator-color;
     font-size: 1rem;
@@ -362,11 +305,3 @@ footer > .copyright {
   -webkit-box-align: center;
   font-size: 1.4rem;
 }
-/*
-
-.task-deal-switch{
-  outline: 1px solid orange;
-}
-
-*/
-

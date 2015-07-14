@@ -13,20 +13,20 @@
 <body onselectstart="return true;" ondragstart="return false;" style="overflow: hidden;">
 <div class="l-container">
   <section data-role="body" class="body">
-    <div class="l-section" >
+    <div class="l-section">
       <div id="task-body" class="task-body">
         <div id="text-body">
           <textarea class="text-textarea" name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
         </div>
         <div id="audio-body" class="l-box-justify-center h-100p hide">
-          <div id="remake" class="audio-ctrl hide" >
+          <div id="remake" class="audio-ctrl hide">
             <div class="task-icon-remake"></div>
             <div class="task-icon_text">重录</div>
           </div>
           <div class="audio-time-panel"><span id="time-panel-seconds">0</span>"</div>
           <div id="play" class="audio-ctrl hide">
             <div class="task-icon-play"></div>
-            <div  class="task-icon_text">试听</div>
+            <div class="task-icon_text">试听</div>
           </div>
         </div>
       </div>
@@ -71,71 +71,78 @@
       </ul>
     </div>
 
-    <!--<div class="l-section">-->
-    <div class="task-upload-photo"></div>
-    <!--</div>-->
+    <div class="l-section">
+      <!-- upload_img -->
+      <ul class="img-list">
+        <!--<li>
+          <span class="img-list-item"></span>
+          <span class="img-list-del"></span>
+        </li>-->
+        <li>
+          <span class="img-upload"></span>
+        </li>
+      </ul>
+    </div>
 
-    <div class="task-btn-footer">
+    <div class="task-btn-create">
       <a id="issue" href="javascript:void(0);">创建</a>
     </div>
   </section>
 
-  <footer data-role="footer">
-    <div class="copyright">
-      <a href="javascript:void(0);">&copy;弘云信息技术支持</a>
-    </div>
-  </footer>
+  <div class="copyright">
+    <a href="javascript:void(0);">&copy;弘云信息技术支持</a>
+  </div>
 
   <footer id="record-footer" class="l-footer record-footer hide">
-    <a href="javascript:void(0);" id="record" class="record-btn" >按住录音</a>
+    <a href="javascript:void(0);" id="record" class="record-btn">按住录音</a>
   </footer>
-  <div id="mask" class="mask l-box-v-center hide" >
+  <div id="mask" class="mask l-box-v-center hide">
     <div id="record-indicator" class="record-indicator hide"></div>
     <div id="record-timer" class="record-timer hide"><span id="timer-seconds">0</span>"</div>
   </div>
 </div>
 
-  <!--<section class="section">
-    <div class="item  is-center">
-      <i class="record-ready item-inner"></i>
-      <span class="item-inner">我要说话</span></div>
-  </section>-->
+<!--<section class="section">
+  <div class="item  is-center">
+    <i class="record-ready item-inner"></i>
+    <span class="item-inner">我要说话</span></div>
+</section>-->
 
-  <!--<section class="section">
-    <div class="item with-border-dark ">
-      <span class="item-title">案件类型</span>
+<!--<section class="section">
+  <div class="item with-border-dark ">
+    <span class="item-title">案件类型</span>
 
-      <div class="item-value">监察路长、责任路长单位
-        <div class="item-badge">5</div>
-      </div>
-      <i class="item-trigger"></i>
+    <div class="item-value">监察路长、责任路长单位
+      <div class="item-badge">5</div>
     </div>
-    <div class="item with-border-dark">
-      <span class="item-title">发布对象</span>
+    <i class="item-trigger"></i>
+  </div>
+  <div class="item with-border-dark">
+    <span class="item-title">发布对象</span>
 
-      <div class="item-value">未选择
-      </div>
-      <i class="item-trigger"></i>
+    <div class="item-value">未选择
     </div>
-    <div class="item">
-      <span class="item-title">抄送</span>
+    <i class="item-trigger"></i>
+  </div>
+  <div class="item">
+    <span class="item-title">抄送</span>
 
-      <div class="item-value">未选择
-      </div>
-      <i class="item-trigger"></i>
+    <div class="item-value">未选择
     </div>
-  </section>
+    <i class="item-trigger"></i>
+  </div>
+</section>
 
-  <section class="section">
-    <div class="item">
-      <span class="item-title">截止时间</span>
+<section class="section">
+  <div class="item">
+    <span class="item-title">截止时间</span>
 
-      <div class="item-value">未选择
-      </div>
-      <i class="item-trigger"></i>
+    <div class="item-value">未选择
     </div>
-  </section>
-  -->
+    <i class="item-trigger"></i>
+  </div>
+</section>
+-->
 
 <script src="http://192.168.0.101:8080/target/target-script-min.js#anonymous"></script>
 <!--<script src="http://192.168.2.101:8080/target/target-script-min.js#anonymous"></script>-->

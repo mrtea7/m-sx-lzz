@@ -13,32 +13,30 @@
 <body onselectstart="return true;" ondragstart="return false;" style="overflow: hidden;">
 <div class="l-container">
   <section data-role="body" class="body">
-    <div class="l-section">
-      <div class="task-body">
+    <div class="l-section" >
+      <div id="task-body" class="task-body">
         <div id="text-body">
           <textarea class="text-textarea" name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
         </div>
         <div id="audio-body" class="l-box-justify-center h-100p hide">
-          <div id="remake" class="audio-ctrl hide" >
+          <!--hide-->
+          <div id="remake" class="audio-ctrl " >
             <div class="task-icon-remake"></div>
-            <div  class="task-icon_text">重录</div>
+            <div class="task-icon_text">重录</div>
           </div>
           <div class="audio-time-panel">0"</div>
-          <div id="play" class="audio-ctrl hide">
+          <!--hide-->
+          <div id="play" class="audio-ctrl ">
             <div class="task-icon-play"></div>
             <div  class="task-icon_text">试听</div>
           </div>
         </div>
       </div>
-      <section class="l-box-center panel-line b-t">
+      <section id="mode" class="l-box-center panel-line b-t">
         <div id="audio-mode"><i class="task-icon-speak"></i>我要说话</div>
         <div id="text-mode" class="js-task-btn-audio hide"><i class="task-icon-write"></i>切换到文字发布</div>
       </section>
     </div>
-
-
-
-
 
     <div class="l-section">
       <ul class="list">
@@ -62,7 +60,6 @@
 
     <div class="l-section">
       <ul class="list">
-
         <li><a href="javascript:void(0);">
           <div class="list-label">截止时间</div>
           <div class="list-value">未选择</div>
@@ -142,7 +139,7 @@
   -->
 
 <script src="http://192.168.0.101:8080/target/target-script-min.js#anonymous"></script>
-<!--<script src="http://192.168.2.100:8080/target/target-script-min.js#anonymous"></script>-->
+<!--<script src="http://192.168.2.101:8080/target/target-script-min.js#anonymous"></script>-->
 <!--<script src="http://192.168.0.109:8080/target/target-script-min.js#anonymous"></script>-->
 <script src="../../assets/lib/zepto/zepto.min.js"></script>
 <script src="../../assets/lib/hammerjs/hammer.min.js"></script>

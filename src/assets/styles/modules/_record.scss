@@ -28,7 +28,9 @@
   width: 60%;
   text-align: center;
   border-radius: 4px;
-
+  &.active{
+    background-color: #eee;
+  }
 }
 
 

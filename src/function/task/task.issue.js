@@ -3,10 +3,13 @@
  页内全局变量
  切换文字/录音模式
  录音功能
+ 重录/取消重录
+ 试听/停止录音
  */
 
 /*--------------------------
  $ 页内全局变量
+   此处也是对外开放的区域
  --------------------------*/
 // 集中管理变量
 var record = $('#record');
@@ -21,8 +24,12 @@ var bodyGesture = Hammer(document.documentElement, {});
 var bodyH = document.documentElement.clientHeight;
 
 // 定义控制变量
-var isRecordValid = false;  // true 必然是有录音了
+var isRecordValid = false;  // 当前录音是否有效
 var isRecordStart = false;
+var hasAudio = false; // 是否已有录音
+
+// 高度值
+var maskInitHeight = $('#task-body')[0].clientHeight + $('#mode')[0].clientHeight ;
 
 
 /*--------------------------
@@ -49,13 +56,16 @@ $('#text-mode').on('touchstart', function () {
 recordGesture.on('press', function (e) {
   isRecordStart = true;
   isRecordValid = true;
+  // 改变按钮状态
+  record.text('松开结束').addClass('active');
+
   mask.css({'top': '0', 'bottom': '0'});
   indicator = $('#record-indicator');
   if (indicator.length == 0) {
     indicator = $('<div id="record-indicator" class="record-indicator">')
     mask.append(indicator);
   } else {
-    indicator.show();
+    indicator.removeClass('hide')
     indicator.css('background-position', '0px 0px')
   }
 })
@@ -76,7 +86,6 @@ bodyGesture.on('pandown', function (e) {
     // 指定下移到特定的区域才更改状态
     var touchY = e.pointers[0].pageY;
     if (bodyH - touchY < 2 * recordFooterHeight) {
-      console.log('hello');
       indicator.css('background-position', '0px 0px')
       isRecordValid = true;
     }
@@ -87,38 +96,61 @@ bodyGesture.on('panend', stopRecord)
 // 停止录音（未平移过） PS：与
 bodyGesture.on('pressup', stopRecord)
 
-function stopRecord(e){
+function stopRecord(e) {
   if (isRecordStart) {
-    _closeRecord();
+    // 改变按钮状态
+    record.text('按住录音').removeClass('active');
     if (isRecordValid) {
+      hasAudio = true;
       _showAudioCtrl();
+      _closeRecord();
+    } else {
+      // 回到录音状态
+      _resetRecord();
     }
   }
 }
 
 
 /*--------------------------
- $ 重录
+ $ 重录/取消重录
  --------------------------*/
 $('#remake').on('touchstart', function () {
-  _switchMask(true)
+  var $this = $(this);
+  var icon = $this.children('*:nth-child(1)')
+  var txt = $this.children('*:nth-child(2)')
+  if ($this.prop('state') != '取消') {
+    _switchInitAudioMask(true);
+    icon.removeClass('task-icon-remake').addClass('task-icon-cancel');
+    txt.text('取消')
+    $this.prop('state', '取消');
+  }else{
+    _switchInitAudioMask(false);
+    icon.removeClass('task-icon-cancel').addClass('task-icon-remake');
+    txt.text('重录')
+    $this.prop('state', '');
+  }
 })
 
 
-/*--------------------------
- $ 播放录音
- --------------------------*/
-
-
 
 /*--------------------------
- $ 停止录音
+ $ 试听/停止录音
  --------------------------*/
-
-
-/*--------------------------
- $ 试听
- --------------------------*/
+$('#play').on('touchstart', function () {
+  var $this = $(this);
+  var icon = $this.children('*:nth-child(1)')
+  var txt = $this.children('*:nth-child(2)')
+  if ($this.prop('state') != '暂停') {
+    icon.removeClass('task-icon-play').addClass('task-icon-stop');
+    txt.text('暂停')
+    $this.prop('state', '暂停');
+  }else{
+    icon.removeClass('task-icon-stop').addClass('task-icon-play');
+    txt.text('试听')
+    $this.prop('state', '');
+  }
+})
 
 
 
@@ -157,18 +189,18 @@ function _switchAudioMode(bool) {
     mode.addClass('hide');
     body.removeClass('task-slideIn').addClass('task-slideOut');
   }
-  _switchMask(bool);
+  _switchInitAudioMask(bool);
 }
 
 // 遮罩层开关
-function _switchMask(bool) {
+function _switchInitAudioMask(bool) {
   if (bool) {
     recordFooter.removeClass('hide').on('touchmove', function (e) {
       e.preventDefault();
     })
     recordFooterHeight = recordFooter[0].clientHeight
     // 的确每次得重置
-    mask.css({'top': '15rem', 'bottom': '0'}).on('touchmove', function (e) {
+    mask.css({'top': maskInitHeight+'px', 'bottom': '0'}).on('touchmove', function (e) {
       e.preventDefault();
     }).removeClass('hide')
   } else {
@@ -177,13 +209,19 @@ function _switchMask(bool) {
   }
 }
 
+// 完全关闭录音界面
 function _closeRecord() {
-  if (isRecordStart) {
-    mask.addClass('hide');
-    indicator.addClass('hide');
-    recordFooter.addClass('hide');
-    isRecordStart = false;
-  }
+  mask.addClass('hide');
+  indicator.addClass('hide');
+  recordFooter.addClass('hide');
+  isRecordStart = false;
+}
+
+// 回到一开始录音的状态
+function _resetRecord() {
+  _switchInitAudioMask(true);
+  indicator.addClass('hide');
+  isRecordStart = false;
 }
 
 function _showAudioCtrl() {

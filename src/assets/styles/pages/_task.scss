@@ -30,7 +30,9 @@
 
 
 .task-icon-remake,
-.task-icon-play {
+.task-icon-cancel,
+.task-icon-play,
+.task-icon-stop{
   color: #ff303b;
   display: block;
   // padding 解决伪元素溢出
@@ -45,6 +47,14 @@
 
 .task-icon-play {
   @extend .icon-play;
+}
+
+.task-icon-cancel {
+  @extend .icon-cancel;
+}
+
+.task-icon-stop {
+  @extend .icon-stop;
 }
 
 .task-icon_text {

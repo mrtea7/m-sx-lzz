@@ -30,7 +30,7 @@ module.exports = {
     useAvailablePort: true,
     //hostname: '192.168.0.109',
     hostname: '192.168.0.101',
-    //hostname: '192.168.2.100',
+    //hostname: '192.168.2.101',
     livereload: true, // 刷新，与 watch 搭配使用能达到文件变化自动刷新的效果
     open: true,
     // 总结：手动更改的地方有 2 处：1）在这里(如果要在本地调试)  2）home/js/appCtrl.js 切换 lazyloadForBuild

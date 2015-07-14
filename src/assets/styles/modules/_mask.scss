@@ -19,6 +19,8 @@
   -webkit-user-select: none;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.3);
+  top: 0; // 初始化很有必要
+  bottom: 0;
   &.mask-fullscreen{
     top: 0;
     bottom: 0;

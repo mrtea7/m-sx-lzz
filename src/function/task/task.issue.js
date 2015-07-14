@@ -9,14 +9,14 @@
 
 /*--------------------------
  $ 页内全局变量
-   此处也是对外开放的区域
+ 此处也是对外开放的区域
  --------------------------*/
 // 集中管理变量
 var record = $('#record');
 var mask = $('#mask');
 var recordFooter = $('#record-footer');
 var recordFooterHeight; // get height when display block
-var indicator; // dynamic
+var indicator = $('#record-indicator');
 
 // Hammer Setup
 var recordGesture = Hammer(record[0], {});
@@ -28,8 +28,10 @@ var isRecordValid = false;  // 当前录音是否有效
 var isRecordStart = false;
 var hasAudio = false; // 是否已有录音
 
-// 高度值
-var maskInitHeight = $('#task-body')[0].clientHeight + $('#mode')[0].clientHeight ;
+var maskInitHeight = $('#task-body')[0].clientHeight + $('#mode')[0].clientHeight;
+var timerConfig = {id: null, seconds: 0}; // 计数器开关
+var recordTimer = $('#record-timer');
+var timerSeconds = $('#timer-seconds');
 
 
 /*--------------------------
@@ -53,22 +55,25 @@ $('#text-mode').on('touchstart', function () {
  $ 录音功能
  --------------------------*/
 // 按住录音
-recordGesture.on('press', function (e) {
+// todo press 效果有延迟，如何调整
+// touchstart 要对应 touchend
+record.on('touchstart', recordStart)
+/*recordGesture.on('press', function (e) {
+})*/
+
+function recordStart (){
   isRecordStart = true;
   isRecordValid = true;
   // 改变按钮状态
   record.text('松开结束').addClass('active');
-
+  // 计数器
+  _timerStart();
   mask.css({'top': '0', 'bottom': '0'});
-  indicator = $('#record-indicator');
-  if (indicator.length == 0) {
-    indicator = $('<div id="record-indicator" class="record-indicator">')
-    mask.append(indicator);
-  } else {
-    indicator.removeClass('hide')
-    indicator.css('background-position', '0px 0px')
-  }
-})
+  indicator.removeClass('hide')
+  indicator.css('background-position', '0px 0px')
+  recordTimer.removeClass('hide')
+}
+
 // 上滑取消录音
 bodyGesture.on('panup', function (e) {
   if (isRecordStart) {
@@ -93,8 +98,11 @@ bodyGesture.on('pandown', function (e) {
 })
 // 停止录音（经过平移）
 bodyGesture.on('panend', stopRecord)
-// 停止录音（未平移过） PS：与
+// 停止录音（未平移过）
 bodyGesture.on('pressup', stopRecord)
+recordGesture.on('pressup', stopRecord)
+recordGesture.on('touchend', stopRecord)
+
 
 function stopRecord(e) {
   if (isRecordStart) {
@@ -104,10 +112,13 @@ function stopRecord(e) {
       hasAudio = true;
       _showAudioCtrl();
       _closeRecord();
+      _updateTimerPanel();
     } else {
-      // 回到录音状态
+
       _resetRecord();
     }
+    // 计数器
+    _timerStop();
   }
 }
 
@@ -124,14 +135,13 @@ $('#remake').on('touchstart', function () {
     icon.removeClass('task-icon-remake').addClass('task-icon-cancel');
     txt.text('取消')
     $this.prop('state', '取消');
-  }else{
+  } else {
     _switchInitAudioMask(false);
     icon.removeClass('task-icon-cancel').addClass('task-icon-remake');
     txt.text('重录')
     $this.prop('state', '');
   }
 })
-
 
 
 /*--------------------------
@@ -145,15 +155,12 @@ $('#play').on('touchstart', function () {
     icon.removeClass('task-icon-play').addClass('task-icon-stop');
     txt.text('暂停')
     $this.prop('state', '暂停');
-  }else{
+  } else {
     icon.removeClass('task-icon-stop').addClass('task-icon-play');
     txt.text('试听')
     $this.prop('state', '');
   }
 })
-
-
-
 
 
 /*--------------------------
@@ -200,7 +207,7 @@ function _switchInitAudioMask(bool) {
     })
     recordFooterHeight = recordFooter[0].clientHeight
     // 的确每次得重置
-    mask.css({'top': maskInitHeight+'px', 'bottom': '0'}).on('touchmove', function (e) {
+    mask.css({'top': maskInitHeight + 'px', 'bottom': '0'}).on('touchmove', function (e) {
       e.preventDefault();
     }).removeClass('hide')
   } else {
@@ -213,14 +220,16 @@ function _switchInitAudioMask(bool) {
 function _closeRecord() {
   mask.addClass('hide');
   indicator.addClass('hide');
+  recordTimer.addClass('hide');
   recordFooter.addClass('hide');
   isRecordStart = false;
 }
 
-// 回到一开始录音的状态
+// 回到一开始录音的状态（界面）
 function _resetRecord() {
   _switchInitAudioMask(true);
   indicator.addClass('hide');
+  recordTimer.addClass('hide');
   isRecordStart = false;
 }
 
@@ -228,6 +237,24 @@ function _showAudioCtrl() {
   $('.audio-ctrl').removeClass('hide');
 }
 
+// 计数器开始/停止
+function _timerStart() {
+  // 建议在此处重置
+  timerConfig.seconds = 0;
+  timerSeconds.text(0);
+  timerConfig.id = setInterval(function () {
+    timerConfig.seconds += 1;
+    timerSeconds.text(timerConfig.seconds)
+  }, 1000);
+}
 
+function _timerStop() {
+  clearInterval(timerConfig.id);
+}
+
+// 如果录音有效，才更新到时间面板
+function _updateTimerPanel(){
+  $('#time-panel-seconds').text(timerConfig.seconds);
+}
 
 

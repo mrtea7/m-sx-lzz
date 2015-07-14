@@ -24,7 +24,12 @@
   @extend %l-box-align-center;
 }
 
-
+.l-box-v-center{
+  @extend %l-box;
+  -webkit-box-orient: vertical;
+  @extend %l-box-align-center;
+  -webkit-box-pack: center;
+}
 
 
 

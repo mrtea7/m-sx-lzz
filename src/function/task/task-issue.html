@@ -19,14 +19,12 @@
           <textarea class="text-textarea" name="content" placeholder="请填写任务内容。" maxlength="300"></textarea>
         </div>
         <div id="audio-body" class="l-box-justify-center h-100p hide">
-          <!--hide-->
-          <div id="remake" class="audio-ctrl " >
+          <div id="remake" class="audio-ctrl hide" >
             <div class="task-icon-remake"></div>
             <div class="task-icon_text">重录</div>
           </div>
-          <div class="audio-time-panel">0"</div>
-          <!--hide-->
-          <div id="play" class="audio-ctrl ">
+          <div class="audio-time-panel"><span id="time-panel-seconds">0</span>"</div>
+          <div id="play" class="audio-ctrl hide">
             <div class="task-icon-play"></div>
             <div  class="task-icon_text">试听</div>
           </div>
@@ -93,7 +91,10 @@
   <footer id="record-footer" class="l-footer record-footer hide">
     <a href="javascript:void(0);" id="record" class="record-btn" >按住录音</a>
   </footer>
-  <div id="mask" class="mask hide l-box-center"></div>
+  <div id="mask" class="mask l-box-v-center hide" >
+    <div id="record-indicator" class="record-indicator hide"></div>
+    <div id="record-timer" class="record-timer hide"><span id="timer-seconds">0</span>"</div>
+  </div>
 </div>
 
   <!--<section class="section">
@@ -143,7 +144,6 @@
 <!--<script src="http://192.168.0.109:8080/target/target-script-min.js#anonymous"></script>-->
 <script src="../../assets/lib/zepto/zepto.min.js"></script>
 <script src="../../assets/lib/hammerjs/hammer.min.js"></script>
-<script src="../../assets/components/utils.js"></script>
 <script src="task.issue.js"></script>
 </body>
 </html>

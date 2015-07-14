@@ -10,6 +10,7 @@
     "mobiscroll": "~2.16.0",
     "async": "~1.3.0",
     "switchery": "~0.8.1",
-    "hammerjs": "~2.0.4"
+    "hammerjs": "~2.0.4",
+    "swipe": "~2.0.0"
   }
 }

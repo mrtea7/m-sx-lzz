@@ -1,4 +1,4 @@
-$.fn.fileUpload = function(opts){
+$.fn.photoUpload = function(opts){
 	return this.each(function(){
 		var opts = $.extend({
 				limit: 5,
@@ -116,7 +116,7 @@ $.fn.fileUpload = function(opts){
 
 $(function(){
 	$('[data-role="select"]').droplist();
-	$('#uploadImg').fileUpload();
+	$('#uploadImg').photoUpload();
 
 	var addressEl = $('#address');
 

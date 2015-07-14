@@ -1,7 +1,7 @@
 /**
  * Created by tea on 2015/1/26.
  */
-$.fn.fileUpload = function(opts){
+$.fn.photoUpload = function(opts){
     return this.each(function(){
         var opts = $.extend({
                 limit: 5,
@@ -96,7 +96,7 @@ $.fn.fileUpload = function(opts){
 }
 
 $(function(){
-    $('#uploadImg').fileUpload();
+    $('#uploadImg').photoUpload();
 
     var addressEl = $('#address');
 

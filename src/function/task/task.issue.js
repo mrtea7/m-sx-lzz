@@ -29,7 +29,7 @@ var isRecordStart = false;
 var hasAudio = false; // 是否已有录音
 
 var maskInitHeight = $('#task-body')[0].clientHeight + $('#mode')[0].clientHeight;
-var timerConfig = {id: null, seconds: 0}; // 计数器开关
+var timerConfig = {id: null, seconds: 0, active: false}; // 计数器开关, active 用于保证一次录音仅触发一次计数器
 var recordTimer = $('#record-timer');
 var timerSeconds = $('#timer-seconds');
 
@@ -55,11 +55,10 @@ $('#text-mode').on('touchstart', function () {
  $ 录音功能
  --------------------------*/
 // 按住录音
-// todo press 效果有延迟，如何调整
-// touchstart 要对应 touchend
+// 同时满足 touchstart 和 press 有较好的体验，以及修复 bug
+// 只要保证 计数器 timer 只触发一次
 record.on('touchstart', recordStart)
-/*recordGesture.on('press', function (e) {
-})*/
+recordGesture.on('press', recordStart)
 
 function recordStart (){
   isRecordStart = true;
@@ -102,6 +101,7 @@ bodyGesture.on('panend', stopRecord)
 bodyGesture.on('pressup', stopRecord)
 recordGesture.on('pressup', stopRecord)
 recordGesture.on('touchend', stopRecord)
+$('body').on('touchend', stopRecord)
 
 
 function stopRecord(e) {
@@ -114,7 +114,6 @@ function stopRecord(e) {
       _closeRecord();
       _updateTimerPanel();
     } else {
-
       _resetRecord();
     }
     // 计数器
@@ -128,20 +127,16 @@ function stopRecord(e) {
  --------------------------*/
 $('#remake').on('touchstart', function () {
   var $this = $(this);
-  var icon = $this.children('*:nth-child(1)')
-  var txt = $this.children('*:nth-child(2)')
-  if ($this.prop('state') != '取消') {
+  // 逻辑是切换
+  if ($this.prop('is-remake') == '是') {
+    _switchRemake(false);
     _switchInitAudioMask(true);
-    icon.removeClass('task-icon-remake').addClass('task-icon-cancel');
-    txt.text('取消')
-    $this.prop('state', '取消');
-  } else {
+  }else{
+    _switchRemake(true);
     _switchInitAudioMask(false);
-    icon.removeClass('task-icon-cancel').addClass('task-icon-remake');
-    txt.text('重录')
-    $this.prop('state', '');
   }
 })
+
 
 
 /*--------------------------
@@ -151,14 +146,12 @@ $('#play').on('touchstart', function () {
   var $this = $(this);
   var icon = $this.children('*:nth-child(1)')
   var txt = $this.children('*:nth-child(2)')
-  if ($this.prop('state') != '暂停') {
+  if (txt.text() == '试听') {
     icon.removeClass('task-icon-play').addClass('task-icon-stop');
     txt.text('暂停')
-    $this.prop('state', '暂停');
   } else {
     icon.removeClass('task-icon-stop').addClass('task-icon-play');
     txt.text('试听')
-    $this.prop('state', '');
   }
 })
 
@@ -235,21 +228,26 @@ function _resetRecord() {
 
 function _showAudioCtrl() {
   $('.audio-ctrl').removeClass('hide');
+  _switchRemake(true);
 }
 
 // 计数器开始/停止
 function _timerStart() {
-  // 建议在此处重置
-  timerConfig.seconds = 0;
-  timerSeconds.text(0);
-  timerConfig.id = setInterval(function () {
-    timerConfig.seconds += 1;
-    timerSeconds.text(timerConfig.seconds)
-  }, 1000);
+  if (!timerConfig.active) {
+    // 建议在此处重置
+    timerConfig.seconds = 0;
+    timerSeconds.text(0);
+    timerConfig.id = setInterval(function () {
+      timerConfig.seconds += 1;
+      timerSeconds.text(timerConfig.seconds)
+    }, 1000);
+    timerConfig.active = true;
+  }
 }
 
 function _timerStop() {
   clearInterval(timerConfig.id);
+  timerConfig.active = false;
 }
 
 // 如果录音有效，才更新到时间面板
@@ -257,4 +255,17 @@ function _updateTimerPanel(){
   $('#time-panel-seconds').text(timerConfig.seconds);
 }
 
-
+function _switchRemake(bool){
+  var $this = $('#remake');
+  var icon = $this.children('*:nth-child(1)')
+  var txt = $this.children('*:nth-child(2)')
+  if ( bool ) {
+    icon.removeClass('task-icon-cancel').addClass('task-icon-remake');
+    txt.text('重录')
+    $this.prop('is-remake', '是')
+  } else {
+    icon.removeClass('task-icon-remake').addClass('task-icon-cancel');
+    txt.text('取消')
+    $this.prop('is-remake', '否')
+  }
+}

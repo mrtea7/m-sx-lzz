@@ -15,7 +15,7 @@
  $ 页内全局变量
  此处也是对外开放的区域
  --------------------------*/
-// 集中管理变量
+// 集中管理全局变量
 var record = $('#record');
 var mask = $('#mask');
 var recordFooter = $('#record-footer');
@@ -64,7 +64,7 @@ $('#text-mode').on('touchstart', function () {
 record.on('touchstart', recordStart)
 recordGesture.on('press', recordStart)
 
-function recordStart (){
+function recordStart() {
   isRecordStart = true;
   isRecordValid = true;
   // 改变按钮状态
@@ -135,12 +135,11 @@ $('#remake').on('touchstart', function () {
   if ($this.prop('is-remake') == '是') {
     _switchRemake(false);
     _switchInitAudioMask(true);
-  }else{
+  } else {
     _switchRemake(true);
     _switchInitAudioMask(false);
   }
 })
-
 
 
 /*--------------------------
@@ -161,33 +160,101 @@ $('#play').on('touchstart', function () {
 
 
 /*--------------------------
-  $ 图片列表
---------------------------*/
+ $ 图片列表
+ --------------------------*/
+// 上传图片
+$('#img-upload').on('touchstart', function () {
+  var $this = $(this), $thisLi = $this.parent();
+  var opts = $.extend({
+    limit: 5,
+    maxSize: 2048
+  }, opts)
+  var li =
+    $('<li>' +
+    ' <img src="../../assets/imgs/tmp/Lighthouse.jpg"/>' +
+    ' <span class="img-list-del"></span>' +
+    '</li>')
+  // 插入到 ul 中
+  $thisLi.before(li)
+  // 增加删除事件
+  li.find('.img-list-del').on('touchstart', _deletePhoto);
+  li.find('img').on('touchstart', previewPhoto)
+  // 判断 li 的个数
+  if (($('#img-list').find('li').length - 1) >= 5) {
+    $thisLi.hide();
+  }
+})
 
+// 删除图片
+$('.img-list-del').on('touchstart', _deletePhoto)
 
-
-
-/*--------------------------
-  $ 图片预览
---------------------------*/
-function previewPhoto(){
-  var template =
-    '<div id="swipe" class="swipe">' +
-    ' <div class="img-box">' +
-    '   <ul></ul>' +
-    '   <div class="swipe-num"></div>' +
-    '   <a href="javascript:void(0);" class="swipe-cancel">×</a>' +
-    ' </div>' +
-    '</div>';
-  var swipe = $('#swipe');
-  if (swipe.length == 0) {
-    swipe = $(template).appendTo('body')
+function _deletePhoto(){
+  $(this).parent().remove();
+  // 判断 li 的个数
+  if (($('#img-list').find('li').length - 1) < 5) {
+    $('#img-upload').parent().show();
   }
 }
 
 
+/*--------------------------
+ $ 图片预览
+ --------------------------*/
+$('#img-list').find('img').on('touchstart', previewPhoto)
+function previewPhoto() {
+  var template =
+    '<div id="swipe" class="swipe">' +
+    ' <div id="img-box" class="img-box">' +
+    '   <ul></ul>' +
+    '   <div id="swipe-num" class="swipe-num"></div>' +
+    '   <a href="javascript:void(0);" class="swipe-cancel">×</a>' +
+    ' </div>' +
+    '</div>';
+  var swipe = $('#swipe'), mySwipe;
+  var liHtml = '', numHtml = '';
+  var imgListIndex = $(this).parent().index(); // li
 
+  if (swipe.length == 0) {
+    swipe = $(template).appendTo('body')
+  }
 
+  $('#img-list').find('img').each(function () {
+    liHtml += '<li><img src="' + $(this).prop('src') + '"/></div></li>';
+    numHtml += '<span></span>';
+  })
+
+  swipe.find('ul').append(liHtml);
+  swipe.find('#swipe-num').append(numHtml);
+  swipe.show(); // 图片加载全后再显示 swipe
+
+  if (!mySwipe) {
+    if (typeof Swipe === 'undefined') throw Error('please load swipe.js');
+    mySwipe = new Swipe(swipe.find('#img-box')[0], {
+      cur: imgListIndex,
+      dir: 'horizontal',
+      callback: function (index) {
+        _swipeCallback($(this.el), index);
+      }
+    });
+  } else {
+    mySwipe.cur = imgListIndex;
+    mySwipe.init();
+  }
+  _swipeCallback(swipe, imgListIndex);
+
+  function _swipeCallback(obj, index) {
+    obj.find('#swipe-num span').eq(index).addClass('on').siblings().removeClass('on');
+  }
+
+  // 关闭 swipe
+  swipe.on('touchstart', function (e) {
+    var className = e.target.className;
+    if (className == 'swipe' || className == 'swipe-cancel') {
+      swipe.hide().find('ul').html('').next().html('');
+    }
+    e.preventDefault();
+  });
+}
 
 
 /*--------------------------
@@ -285,15 +352,15 @@ function _timerStop() {
 }
 
 // 如果录音有效，才更新到时间面板
-function _updateTimerPanel(){
+function _updateTimerPanel() {
   $('#time-panel-seconds').text(timerConfig.seconds);
 }
 
-function _switchRemake(bool){
+function _switchRemake(bool) {
   var $this = $('#remake');
   var icon = $this.children('*:nth-child(1)')
   var txt = $this.children('*:nth-child(2)')
-  if ( bool ) {
+  if (bool) {
     icon.removeClass('task-icon-cancel').addClass('task-icon-remake');
     txt.text('重录')
     $this.prop('is-remake', '是')

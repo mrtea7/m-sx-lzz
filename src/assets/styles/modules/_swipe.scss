@@ -2,7 +2,6 @@
 
 /* 
   用在图片预览上
-
 */
 
 .swipe {
@@ -13,7 +12,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, .4);
   z-index: 120;
-  display: none;
+  display: none; // 默认隐藏
 }
 
 .swipe-num {

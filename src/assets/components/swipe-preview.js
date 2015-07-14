@@ -4,6 +4,9 @@
     _img.scss
 
     预览用到 swipe，可以叫做 swipe-box
+
+    PS：本工程不用，仅供参考
+
 */
 $.fn.photoUpload = function (opts) {
   return this.each(function () {
@@ -24,7 +27,7 @@ $.fn.photoUpload = function (opts) {
       _swipe = $(template).appendTo('body'),
       mySwipe;
 
-    $this.on('input', 'change', function () {
+    /*$this.on('input', 'change', function () {
       var item = $(this).parent().clone(),
         file = this.files[0],
         _parent = $(this).parents('.upload_img');
@@ -43,7 +46,7 @@ $.fn.photoUpload = function (opts) {
       if (_parent.find('li').length > opts.limit) {
         lastBtn.hide();
       }
-    });
+    });*/
 
     $this.delegate('span', 'click', showImg);
 
